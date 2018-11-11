@@ -148,16 +148,16 @@ class BasicLayout extends React.PureComponent {
     } = this.props;
     const { menuData } = this.state;
     const layout = (
-      <Layout>
-        <Layout
-          style={{
-            minHeight: '100vh',
-          }}
-        >
-          <Header siteInfo={siteInfo} menuData={menuData} pathname={pathname} />
-          <Content>{children}</Content>
-          <Footer siteInfo={siteInfo} />
-        </Layout>
+      <Layout
+        style={{
+          minHeight: '100vh',
+        }}
+      >
+        <Header siteInfo={siteInfo} menuData={menuData} pathname={pathname} />
+        <Content>
+          <div className="container">{children}</div>
+        </Content>
+        <Footer siteInfo={siteInfo} />
       </Layout>
     );
     return (

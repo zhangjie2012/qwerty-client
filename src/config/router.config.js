@@ -4,17 +4,15 @@ export default [
     path: '/',
     component: '../layouts/BasicLayout',
     routes: [
-      { path: '/', redirect: '/hello' },
+      { path: '/', redirect: '/blogs' },
       {
-        path: '/hello',
-        name: 'dashboard',
-        icon: 'dashboard',
-        label: 'hello',
-        component: './Hello',
+        path: '/blogs',
+        name: 'blogs',
+        label: '博客',
+        component: './Blog/BlogList',
       },
       {
         name: 'exception',
-        icon: 'warning',
         path: '/exception',
         hideInMenu: true,
         routes: [
