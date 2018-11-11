@@ -1,5 +1,6 @@
 import React from 'react';
 import { Layout } from 'antd';
+import { connect } from 'dva';
 import DocumentTitle from 'react-document-title';
 import isEqual from 'lodash/isEqual';
 import memoizeOne from 'memoize-one';
@@ -7,6 +8,8 @@ import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
 import pathToRegexp from 'path-to-regexp';
 import Context from './MenuContext';
+import Header from './Header';
+import Footer from './Footer';
 
 const { Content } = Layout;
 
@@ -69,10 +72,15 @@ class BasicLayout extends React.PureComponent {
   }
 
   state = {
-    /* menuData: this.getMenuData(), */
+    menuData: this.getMenuData(),
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'global/fetchSiteInfo',
+    });
+  }
 
   componentDidUpdate() {
     // After changing to phone mode,
@@ -116,13 +124,6 @@ class BasicLayout extends React.PureComponent {
     return routerMap;
   }
 
-  matchParamsPath = pathname => {
-    const pathKey = Object.keys(this.breadcrumbNameMap).find(key =>
-      pathToRegexp(key).test(pathname)
-    );
-    return this.breadcrumbNameMap[pathKey];
-  };
-
   getPageTitle = pathname => {
     const currRouterData = this.matchParamsPath(pathname);
 
@@ -132,11 +133,20 @@ class BasicLayout extends React.PureComponent {
     return `${currRouterData.label} - Ant Design Pro`;
   };
 
+  matchParamsPath = pathname => {
+    const pathKey = Object.keys(this.breadcrumbNameMap).find(key =>
+      pathToRegexp(key).test(pathname)
+    );
+    return this.breadcrumbNameMap[pathKey];
+  };
+
   render() {
     const {
       children,
       location: { pathname },
+      global: { siteInfo },
     } = this.props;
+    const { menuData } = this.state;
     const layout = (
       <Layout>
         <Layout
@@ -144,12 +154,9 @@ class BasicLayout extends React.PureComponent {
             minHeight: '100vh',
           }}
         >
-          {/* <Header
-              menuData={menuData}
-              {...this.props}
-              /> */}
+          <Header siteInfo={siteInfo} menuData={menuData} pathname={pathname} />
           <Content>{children}</Content>
-          {/* <Footer /> */}
+          <Footer siteInfo={siteInfo} />
         </Layout>
       </Layout>
     );
@@ -169,4 +176,6 @@ class BasicLayout extends React.PureComponent {
   }
 }
 
-export default BasicLayout;
+export default connect(({ global }) => ({
+  global,
+}))(BasicLayout);

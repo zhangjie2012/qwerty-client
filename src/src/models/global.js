@@ -1,11 +1,34 @@
+import { querySiteInfo } from '@/services/site';
+
 export default {
   namespace: 'global',
 
-  state: {},
+  state: {
+    siteInfo: {
+      title: '',
+      copyright: '',
+      ICP: '',
+    },
+  },
 
-  effects: {},
+  effects: {
+    *fetchSiteInfo(_, { call, put }) {
+      const response = yield call(querySiteInfo);
+      yield put({
+        type: 'saveSiteInfo',
+        payload: response.data,
+      });
+    },
+  },
 
-  reducers: {},
+  reducers: {
+    saveSiteInfo(state, { payload }) {
+      return {
+        ...state,
+        siteInfo: payload.site_info, // title, copyright, ICP
+      };
+    },
+  },
 
   subscriptions: {
     setup({ history }) {
