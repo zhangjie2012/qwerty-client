@@ -4,7 +4,11 @@ import { queryBlogs } from '@/services/blog';
 export default {
   namespace: 'blog',
 
-  state: {},
+  state: {
+    currentPage: 1,
+    totalPages: 1,
+    articleList: [],
+  },
 
   effects: {
     *fetchList({ payload }, { call, put }) {
@@ -22,9 +26,16 @@ export default {
 
   reducers: {
     saveList(state, { payload }) {
-      console.log(payload);
+      const {
+        current_page_num: currentPage,
+        total_pages: totalPages,
+        article_list: articleList,
+      } = payload;
       return {
         ...state,
+        currentPage,
+        totalPages,
+        articleList,
       };
     },
   },

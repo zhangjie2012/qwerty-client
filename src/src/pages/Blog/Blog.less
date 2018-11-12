@@ -1,0 +1,31 @@
+@import '~antd/lib/style/themes/default.less';
+
+.content {
+  .blogRow {
+    margin: 25px 0 30px;
+
+    .blogTitle {
+      font-size: 20px;
+      margin-bottom: @padding-xs;
+      color: @heading-color;
+    }
+
+    .blogMeta {
+      color: @text-color-secondary;
+      margin-bottom: @padding-xs;
+
+      a {
+        color: @text-color-secondary;
+
+        &:hover,
+        &:active {
+          color: @text-color;
+        }
+      }
+    }
+
+    .blogAbstract {
+      margin-bottom: @padding-xs;
+    }
+  }
+}

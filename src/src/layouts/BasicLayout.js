@@ -151,6 +151,7 @@ class BasicLayout extends React.PureComponent {
       <Layout
         style={{
           minHeight: '100vh',
+          background: 'white',
         }}
       >
         <Header siteInfo={siteInfo} menuData={menuData} pathname={pathname} />
