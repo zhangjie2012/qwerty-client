@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { message } from 'antd';
 import { queryBlogs } from '@/services/blog';
 
@@ -31,6 +32,12 @@ export default {
         total_pages: totalPages,
         article_list: articleList,
       } = payload;
+
+      const articleListBak = [];
+      for (const article of articleList) {
+        article.publish_dt = moment(article.publish_dt).format('YYYY-MM-DD HH:mm');
+        articleListBak.push(article);
+      }
       return {
         ...state,
         currentPage,
