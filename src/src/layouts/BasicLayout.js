@@ -124,13 +124,12 @@ class BasicLayout extends React.PureComponent {
     return routerMap;
   }
 
-  getPageTitle = pathname => {
+  getPageTitle = (pathname, title) => {
     const currRouterData = this.matchParamsPath(pathname);
-
     if (!currRouterData) {
-      return 'Ant Design Pro';
+      return title;
     }
-    return `${currRouterData.label} - Ant Design Pro`;
+    return `${title} - ${currRouterData.label}`;
   };
 
   matchParamsPath = pathname => {
@@ -147,6 +146,7 @@ class BasicLayout extends React.PureComponent {
       global: { siteInfo },
     } = this.props;
     const { menuData } = this.state;
+
     const layout = (
       <Layout
         style={{
@@ -163,7 +163,7 @@ class BasicLayout extends React.PureComponent {
     );
     return (
       <React.Fragment>
-        <DocumentTitle title={this.getPageTitle(pathname)}>
+        <DocumentTitle title={this.getPageTitle(pathname, siteInfo.title)}>
           <ContainerQuery query={query}>
             {params => (
               <Context.Provider value={this.getContext()}>
