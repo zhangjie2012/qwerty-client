@@ -1,18 +1,19 @@
 @import '~antd/lib/style/themes/default.less';
 
 .content {
+  padding: 25px 0;
+
   .blogRow {
-    margin: 25px 0 35px;
+    margin-bottom: 35px;
 
     .blogTitle {
       font-size: 18px;
-      margin-bottom: 5px;
-      color: @heading-color;
+      margin-bottom: 4px;
     }
 
     .blogMeta {
       color: @text-color-secondary;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
 
       a {
         color: @text-color-secondary;
@@ -30,7 +31,64 @@
   }
 
   .pagination {
-    margin-bottom: 35px;
+    margin-bottom: 10px;
     text-align: center;
+  }
+
+  .articleTitle {
+    font-size: 22px;
+    color: @heading-color;
+    margin-bottom: 4px;
+  }
+
+  .articleMeta {
+    color: @text-color-secondary;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid @border-color-split;
+
+    a {
+      color: @text-color-secondary;
+
+      &:hover,
+      &:active {
+        color: @text-color;
+      }
+    }
+  }
+
+  .coverImg {
+    img {
+      width: 100%;
+      margin-bottom: 12px;
+    }
+
+    .copyright {
+      text-align: right;
+      color: @text-color-secondary;
+      margin-bottom: 12px;
+    }
+  }
+
+  .articleContent {
+    p {
+      text-align: justify;
+    }
+
+    img {
+      display: block;
+      vertical-align: middle;
+      page-break-inside: avoid;
+      border: 1px solid #e8e8e8;
+      max-width: 100%;
+    }
+
+    hr {
+      display: block;
+      height: 1px;
+      border: 0;
+      border-top: 1px solid @border-color-split;
+      padding: 0;
+    }
   }
 }

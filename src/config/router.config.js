@@ -12,6 +12,13 @@ export default [
         component: './Blog/BlogList',
       },
       {
+        path: '/blog/:slug',
+        name: 'blog',
+        label: '博客',
+        component: './Blog/BlogDetail',
+        hideInMenu: true,
+      },
+      {
         name: 'exception',
         path: '/exception',
         hideInMenu: true,

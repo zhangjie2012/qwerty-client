@@ -17,7 +17,7 @@ const { Content } = Layout;
 function formatter(data) {
   return data
     .map(item => {
-      if (!item.name || !item.path) {
+      if (!item.name || !item.path || item.hideInMenu) {
         return null;
       }
 

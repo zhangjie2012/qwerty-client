@@ -56,7 +56,7 @@ class BlogList extends Component {
               return (
                 <div key={item.slug} className={styles.blogRow}>
                   <div className={styles.blogTitle}>
-                    <Link to={item.slug}>{item.title}</Link>
+                    <Link to={`/blog/${item.slug}`}>{item.title}</Link>
                   </div>
                   <div className={styles.blogMeta}>
                     {item.publish_dt} | <Link to={item.category.slug}>{item.category.name}</Link>

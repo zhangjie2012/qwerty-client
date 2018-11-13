@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { message } from 'antd';
-import { queryBlogs } from '@/services/blog';
+import { queryBlogs, queryBlogDetail } from '@/services/blog';
 
 export default {
   namespace: 'blog',
@@ -9,6 +9,8 @@ export default {
     currentPage: 1,
     totalPages: 1,
     articleList: [],
+
+    articleDetail: null,
   },
 
   effects: {
@@ -17,6 +19,18 @@ export default {
       if (response.status === 'ok') {
         yield put({
           type: 'saveList',
+          payload: response.data,
+        });
+      } else {
+        message.error(`出错啦：${response.error}`);
+      }
+    },
+
+    *fetchBlogDetail({ payload }, { call, put }) {
+      const response = yield call(queryBlogDetail, payload.params);
+      if (response.status === 'ok') {
+        yield put({
+          type: 'saveBlog',
           payload: response.data,
         });
       } else {
@@ -43,6 +57,22 @@ export default {
         currentPage,
         totalPages,
         articleList,
+      };
+    },
+
+    saveBlog(state, { payload }) {
+      const articleDetail = {
+        title: payload.title,
+        publishDT: moment(payload.publish_dt).format('YYYY-MM-DD HH:mm'),
+        updateDT: moment(payload.update_dt).format('YYYY-MM-DD HH:mm'),
+        category: payload.category,
+        coverImg: payload.cover_img,
+        imgCopyRight: payload.img_copyright,
+        content: payload.content,
+      };
+      return {
+        ...state,
+        articleDetail,
       };
     },
   },
