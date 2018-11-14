@@ -63,8 +63,8 @@ export default {
     saveBlog(state, { payload }) {
       const articleDetail = {
         title: payload.title,
-        publishDT: moment(payload.publish_dt).format('YYYY-MM-DD HH:mm'),
-        updateDT: moment(payload.update_dt).format('YYYY-MM-DD HH:mm'),
+        publishDT: moment(payload.publish_dt).format('YYYY-MM-DD HH:mm:ss'),
+        updateDT: moment(payload.update_dt).format('YYYY-MM-DD HH:mm:ss'),
         category: payload.category,
         coverImg: payload.cover_img,
         imgCopyRight: payload.img_copyright,

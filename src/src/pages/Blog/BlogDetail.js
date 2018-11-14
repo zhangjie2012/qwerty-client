@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
-import { Spin } from 'antd';
+import { Spin, Icon } from 'antd';
 import styles from './Blog.less';
 
 @connect(({ blog, loading }) => ({
@@ -46,6 +46,15 @@ class BlogDetail extends Component {
 
               <div className={styles.contentX}>
                 <div dangerouslySetInnerHTML={{ __html: articleDetail.content }} />
+              </div>
+
+              <div className={styles.meta}>
+                <span className={styles.metaItem}>
+                  <Icon type="calendar" /> {articleDetail.publishDT}
+                </span>
+                <span className={styles.metaItem}>
+                  <Icon type="folder" /> {articleDetail.category.name}
+                </span>
               </div>
             </div>
           )}
