@@ -55,13 +55,11 @@ class BlogList extends Component {
             {articleList.map(item => {
               return (
                 <div key={item.slug} className={styles.blogRow}>
+                  <div className={styles.blogMeta}>{item.publish_dt}</div>
                   <div className={styles.blogTitle}>
                     <Link to={`/blog/${item.slug}`}>{item.title}</Link>
                   </div>
-                  <div className={styles.blogMeta}>
-                    {item.publish_dt} | <Link to={item.category.slug}>{item.category.name}</Link>
-                  </div>
-                  <div className={styles.blogAbstract}>{item.abstract}</div>
+                  {item.abstract && <div className={styles.blogAbstract}>{item.abstract}</div>}
                 </div>
               );
             })}

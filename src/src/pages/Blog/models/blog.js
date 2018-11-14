@@ -49,7 +49,7 @@ export default {
 
       const articleListBak = [];
       for (const article of articleList) {
-        article.publish_dt = moment(article.publish_dt).format('YYYY-MM-DD HH:mm');
+        article.publish_dt = moment(article.publish_dt).format('YYYY年MM月DD日');
         articleListBak.push(article);
       }
       return {

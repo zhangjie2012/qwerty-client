@@ -34,21 +34,17 @@ class BlogDetail extends Component {
       <Spin spinning={loadingBlog}>
         <div className={styles.content}>
           {articleDetail && (
-            <div className={styles.articleDetail}>
-              <div className={styles.articleTitle}>{articleDetail.title}</div>
-              <div className={styles.articleMeta}>
-                发布于 {articleDetail.publishDT}
-                ，更新于 {articleDetail.updateDT}
-                ，分类：
-                {articleDetail.category.name}
-              </div>
+            <div className={styles.article}>
+              <h1 className={styles.title}>{articleDetail.title}</h1>
+
               {articleDetail.coverImg && (
                 <div className={styles.coverImg}>
                   <img alt={articleDetail.coverImg} src={articleDetail.coverImg} />
                   <div className={styles.copyright}>{articleDetail.imgCopyRight}</div>
                 </div>
               )}
-              <div className={styles.articleContent}>
+
+              <div className={styles.contentX}>
                 <div dangerouslySetInnerHTML={{ __html: articleDetail.content }} />
               </div>
             </div>
