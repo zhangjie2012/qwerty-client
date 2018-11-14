@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
-import { Spin, Pagination } from 'antd';
+import { Spin } from 'antd';
 import Link from 'umi/link';
 
 import styles from './Blog.less';
@@ -12,7 +12,7 @@ import styles from './Blog.less';
 class BlogList extends Component {
   state = {
     page: 1,
-    perCount: 10,
+    perCount: 6,
   };
 
   componentDidMount() {
@@ -46,8 +46,7 @@ class BlogList extends Component {
 
   render() {
     const { loadingBlogs } = this.props;
-    const { currentPage, totalPages, articleList } = this.props.blog;
-    const { perCount } = this.state;
+    const { articleList } = this.props.blog;
     return (
       <div className={styles.content}>
         <Spin spinning={loadingBlogs}>
@@ -64,15 +63,8 @@ class BlogList extends Component {
               );
             })}
           </div>
-          <div className={styles.pagination}>
-            <Pagination
-              simple
-              hideOnSinglePage
-              current={currentPage}
-              pageSize={perCount}
-              total={perCount * totalPages}
-              onChange={this.changePages}
-            />
+          <div className={styles.more}>
+            更多文章，见 <Link to="list">列表</Link> && <Link to="category">分类</Link>。
           </div>
         </Spin>
       </div>

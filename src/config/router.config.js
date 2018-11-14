@@ -9,6 +9,7 @@ export default [
         path: '/blogs',
         name: 'blogs',
         label: '博客',
+        matchPaths: ['/blogs', '/blog'],
         component: './Blog/BlogList',
       },
       {

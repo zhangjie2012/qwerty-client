@@ -20,7 +20,8 @@ class HeaderView extends PureComponent {
   getSelectedKeys = (pathname, menuData) => {
     const keys = [];
     for (const item of menuData) {
-      if (pathname === item.path) {
+      // 前缀匹配
+      if (item.matchPaths.some(path => pathname.startsWith(path))) {
         keys.push(item.name);
       }
     }
