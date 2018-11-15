@@ -37,6 +37,13 @@ export default {
         message.error(`出错啦：${response.error}`);
       }
     },
+
+    *clearBlogDetail(_, { put }) {
+      yield put({
+        type: 'saveBlog',
+        payload: null,
+      });
+    },
   },
 
   reducers: {
@@ -61,19 +68,26 @@ export default {
     },
 
     saveBlog(state, { payload }) {
-      const articleDetail = {
-        title: payload.title,
-        publishDT: moment(payload.publish_dt).format('YYYY-MM-DD HH:mm:ss'),
-        updateDT: moment(payload.update_dt).format('YYYY-MM-DD HH:mm:ss'),
-        category: payload.category,
-        coverImg: payload.cover_img,
-        imgCopyRight: payload.img_copyright,
-        content: payload.content,
-      };
-      return {
-        ...state,
-        articleDetail,
-      };
+      if (payload) {
+        const articleDetail = {
+          title: payload.title,
+          publishDT: moment(payload.publish_dt).format('YYYY-MM-DD HH:mm:ss'),
+          updateDT: moment(payload.update_dt).format('YYYY-MM-DD HH:mm:ss'),
+          category: payload.category,
+          coverImg: payload.cover_img,
+          imgCopyRight: payload.img_copyright,
+          content: payload.content,
+        };
+        return {
+          ...state,
+          articleDetail,
+        };
+      } else {
+        return {
+          ...state,
+          articleDetail: null,
+        };
+      }
     },
   },
 };

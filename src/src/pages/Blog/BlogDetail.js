@@ -24,6 +24,12 @@ class BlogDetail extends Component {
     });
   }
 
+  componentWillUnmount() {
+    this.props.dispatch({
+      type: 'blog/clearBlogDetail',
+    });
+  }
+
   render() {
     const {
       blog: { articleDetail },
