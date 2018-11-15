@@ -14,3 +14,7 @@ export async function queryBlogDetail(params) {
 export async function queryArchiveBlogs() {
   return request(`${prefix}/query_archive_blogs`);
 }
+
+export async function queryBlogCategory() {
+  return request(`${prefix}/query_blog_categories`);
+}

@@ -18,6 +18,11 @@ export default [
         hideInMenu: true,
       },
       {
+        path: '/blogs/category',
+        component: './Blog/BlogCategory',
+        hideInMenu: true,
+      },
+      {
         path: '/blog/:slug',
         component: './Blog/BlogDetail',
         hideInMenu: true,
