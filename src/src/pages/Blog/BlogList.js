@@ -64,7 +64,7 @@ class BlogList extends Component {
             })}
           </div>
           <div className={styles.more}>
-            更多文章，见 <Link to="list">列表</Link> && <Link to="category">分类</Link>。
+            更多文章，见 <Link to="/blogs/archive">列表</Link> && <Link to="category">分类</Link>。
           </div>
         </Spin>
       </div>

@@ -13,9 +13,12 @@ export default [
         component: './Blog/BlogList',
       },
       {
+        path: '/blogs/archive',
+        component: './Blog/BlogArchive',
+        hideInMenu: true,
+      },
+      {
         path: '/blog/:slug',
-        name: 'blog',
-        label: '博客',
         component: './Blog/BlogDetail',
         hideInMenu: true,
       },

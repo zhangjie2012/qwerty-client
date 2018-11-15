@@ -10,3 +10,7 @@ export async function queryBlogs(params) {
 export async function queryBlogDetail(params) {
   return request(`${prefix}/query_blog_detail?${stringify(params)}`);
 }
+
+export async function queryArchiveBlogs() {
+  return request(`${prefix}/query_archive_blogs`);
+}

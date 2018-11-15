@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { message } from 'antd';
-import { queryBlogs, queryBlogDetail } from '@/services/blog';
+import { queryBlogs, queryBlogDetail, queryArchiveBlogs } from '@/services/blog';
 
 export default {
   namespace: 'blog',
@@ -11,6 +11,8 @@ export default {
     articleList: [],
 
     articleDetail: null,
+
+    archive: [],
   },
 
   effects: {
@@ -43,6 +45,18 @@ export default {
         type: 'saveBlog',
         payload: null,
       });
+    },
+
+    *fetchArchive(_, { call, put }) {
+      const response = yield call(queryArchiveBlogs);
+      if (response.status === 'ok') {
+        yield put({
+          type: 'saveArchive',
+          payload: response.data,
+        });
+      } else {
+        message.error(`出错啦：${response.error}`);
+      }
     },
   },
 
@@ -88,6 +102,28 @@ export default {
           articleDetail: null,
         };
       }
+    },
+
+    saveArchive(state, { payload }) {
+      const archiveArticles = [];
+      for (const item of payload) {
+        const articles = [];
+        for (const article of item.articles) {
+          articles.push({
+            ...article,
+            publishDT: moment(article.publish_dt).format('MM-DD'),
+          });
+        }
+        archiveArticles.push({
+          year: item.year,
+          articles,
+        });
+      }
+
+      return {
+        ...state,
+        archive: archiveArticles,
+      };
     },
   },
 };
