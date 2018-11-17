@@ -42,7 +42,7 @@ const PostCommentForm = props => {
         )}
       </Form.Item>
       <Form.Item className={styles.formRow}>
-        <Button type="default" htmlType="submit">
+        <Button type="default" size="small" htmlType="submit">
           提交
         </Button>
       </Form.Item>
