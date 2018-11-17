@@ -63,8 +63,7 @@ export default {
 
     *clearBlogDetail(_, { put }) {
       yield put({
-        type: 'saveBlog',
-        payload: null,
+        type: 'resetBlogDetail',
       });
     },
 
@@ -124,27 +123,28 @@ export default {
     },
 
     saveBlog(state, { payload }) {
-      if (payload) {
-        const articleDetail = {
-          title: payload.title,
-          publishDT: moment(payload.publish_dt).format('YYYY-MM-DD HH:mm:ss'),
-          updateDT: moment(payload.update_dt).format('YYYY-MM-DD HH:mm:ss'),
-          category: payload.category,
-          coverImg: payload.cover_img,
-          imgCopyRight: payload.img_copyright,
-          content: payload.content,
-          commentCount: payload.comment_count,
-        };
-        return {
-          ...state,
-          articleDetail,
-        };
-      } else {
-        return {
-          ...state,
-          articleDetail: null,
-        };
-      }
+      const articleDetail = {
+        title: payload.title,
+        publishDT: moment(payload.publish_dt).format('YYYY-MM-DD HH:mm:ss'),
+        updateDT: moment(payload.update_dt).format('YYYY-MM-DD HH:mm:ss'),
+        category: payload.category,
+        coverImg: payload.cover_img,
+        imgCopyRight: payload.img_copyright,
+        content: payload.content,
+        commentCount: payload.comment_count,
+      };
+      return {
+        ...state,
+        articleDetail,
+      };
+    },
+
+    resetBlogDetail(state) {
+      return {
+        ...state,
+        articleDetail: null,
+        comments: [],
+      };
     },
 
     saveComments(state, { payload }) {
