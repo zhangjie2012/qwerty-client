@@ -1,6 +1,13 @@
 import moment from 'moment';
 import { message } from 'antd';
-import { queryBlogs, queryBlogDetail, queryArchiveBlogs, queryBlogCategory } from '@/services/blog';
+import {
+  queryBlogs,
+  queryBlogDetail,
+  queryBlogComments,
+  queryArchiveBlogs,
+  queryBlogCategory,
+  addComment,
+} from '@/services/blog';
 
 export default {
   namespace: 'blog',
@@ -11,6 +18,7 @@ export default {
     articleList: [],
 
     articleDetail: null,
+    comments: [],
 
     archive: [],
     categories: [],
@@ -25,7 +33,7 @@ export default {
           payload: response.data,
         });
       } else {
-        message.error(`出错啦：${response.error}`);
+        message.error(`出错啦：${response.message}`);
       }
     },
 
@@ -37,7 +45,19 @@ export default {
           payload: response.data,
         });
       } else {
-        message.error(`出错啦：${response.error}`);
+        message.error(`出错啦：${response.message}`);
+      }
+    },
+
+    *fetchBlogComments({ payload }, { call, put }) {
+      const response = yield call(queryBlogComments, payload);
+      if (response.status === 'ok') {
+        yield put({
+          type: 'saveComments',
+          payload: response.data,
+        });
+      } else {
+        message.error(`出错啦：${response.message}`);
       }
     },
 
@@ -56,7 +76,7 @@ export default {
           payload: response.data,
         });
       } else {
-        message.error(`出错啦：${response.error}`);
+        message.error(`出错啦：${response.message}`);
       }
     },
 
@@ -68,7 +88,16 @@ export default {
           payload: response.data,
         });
       } else {
-        message.error(`出错啦：${response.error}`);
+        message.error(`出错啦：${response.message}`);
+      }
+    },
+
+    *addComment({ payload }, { call }) {
+      const response = yield call(addComment, payload.params);
+      if (response.status === 'ok') {
+        message.success('评论已提交，等待审核中，请勿重复提交');
+      } else {
+        message.error(`出错啦：${response.message}`);
       }
     },
   },
@@ -104,6 +133,7 @@ export default {
           coverImg: payload.cover_img,
           imgCopyRight: payload.img_copyright,
           content: payload.content,
+          commentCount: payload.comment_count,
         };
         return {
           ...state,
@@ -115,6 +145,20 @@ export default {
           articleDetail: null,
         };
       }
+    },
+
+    saveComments(state, { payload }) {
+      const comments = [];
+      for (const item of payload) {
+        comments.push({
+          ...item,
+          publishDT: moment(item.publish_dt).format('YYYY年MM月DD日 HH:mm'),
+        });
+      }
+      return {
+        ...state,
+        comments,
+      };
     },
 
     saveArchive(state, { payload }) {
