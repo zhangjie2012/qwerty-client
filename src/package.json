@@ -45,7 +45,8 @@
     "react-document-title": "^2.0.3",
     "react-dom": "^16.5.1",
     "react-fittext": "^1.0.0",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "react-scrollable-anchor": "^0.6.1"
   },
   "devDependencies": {
     "@types/react": "^16.4.16",
