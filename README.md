@@ -47,3 +47,5 @@ server {
     }
 }
 ```
+
+对于国内用户（`dist/index.html`），`https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js` 访问速度比较慢，建议换成七牛的地址：`https://cdn.staticfile.org/less.js/2.7.3/less.min.js`。
