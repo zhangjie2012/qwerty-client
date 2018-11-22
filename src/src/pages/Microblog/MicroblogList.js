@@ -10,7 +10,7 @@ import styles from './Microblog.less';
 class MicroblogList extends Component {
   state = {
     page: 1,
-    perCount: 10,
+    perCount: 25,
   };
 
   componentDidMount() {
@@ -84,7 +84,9 @@ class MicroblogList extends Component {
           {microblogList.map(microblog => {
             return (
               <div key={microblog.id} className={styles.microblogRow}>
-                <div className={styles.microblogMeta}>{microblog.publishDT}</div>
+                <div className={styles.microblogMeta}>
+                  <Icon type="calendar" /> {microblog.publishDT}
+                </div>
                 {microblog.cover_img && (
                   <div className={styles.microblogImg}>
                     <img alt="" src={microblog.cover_img} />

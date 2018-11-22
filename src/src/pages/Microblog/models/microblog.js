@@ -35,7 +35,7 @@ export default {
 
       const microblogListBak = [];
       for (const microblog of microblogList) {
-        microblog.publishDT = moment(microblog.publish_dt).format('YYYY年MM月DD日 h:mm a');
+        microblog.publishDT = moment(microblog.publish_dt).format('YYYY-MM-DD HH:mm');
         microblogListBak.push(microblog);
       }
 
