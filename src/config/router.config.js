@@ -28,6 +28,13 @@ export default [
         hideInMenu: true,
       },
       {
+        path: '/microblogs',
+        name: 'microblogs',
+        label: '微博',
+        matchPaths: ['/microblog'],
+        component: './Microblog/MicroblogList',
+      },
+      {
         name: 'exception',
         path: '/exception',
         hideInMenu: true,

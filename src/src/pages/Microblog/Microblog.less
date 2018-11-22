@@ -1,0 +1,38 @@
+@import '~antd/lib/style/themes/default.less';
+
+@border-color-split: #f0f0f0;
+
+.content {
+  margin-bottom: @padding-lg;
+
+  .pageTitle {
+    padding: @padding-lg 0;
+    text-align: center;
+    border-bottom: 1px solid @border-color-split;
+    font-style: italic;
+  }
+
+  .microblogRow {
+    border-bottom: 1px solid @border-color-split;
+    padding: @padding-sm 0;
+
+    .microblogMeta {
+      color: @text-color-secondary;
+      margin-bottom: @padding-sm;
+      font-size: @font-size-sm;
+    }
+
+    .microblogImg {
+      img {
+        box-sizing: border-box;
+        width: 100%;
+      }
+      margin-bottom: @padding-xs;
+    }
+
+    .microblogContent {
+      text-align: justify;
+      white-space: pre-wrap;
+    }
+  }
+}
