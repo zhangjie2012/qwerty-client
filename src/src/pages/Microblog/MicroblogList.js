@@ -51,7 +51,7 @@ class MicroblogList extends Component {
     const { loadingMicroblogs } = this.props;
 
     const Pagination = () => {
-      if (totalPages !== 1) {
+      if (totalPages > 1) {
         return (
           <Row className={styles.paginator}>
             <Col span={8}>
