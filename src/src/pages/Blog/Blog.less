@@ -1,6 +1,6 @@
 @import '~antd/lib/style/themes/default.less';
 
-@border-color-split: #f8f8f8;
+@border-color-split: #f0f0f0;
 
 .content {
   .blogRow {
@@ -47,6 +47,7 @@
 
   .article {
     padding-top: @padding-lg;
+    border-bottom: 1px solid @border-color-split;
 
     h1,
     h2,
@@ -59,12 +60,31 @@
       font-weight: normal;
     }
 
-    h1.title {
-      font-size: @font-size-base + 12;
-      font-weight: normal;
-      padding-bottom: @padding-xs;
-      margin-bottom: @padding-md;
+    .title {
       border-bottom: 1px solid @border-color-split;
+      margin-bottom: @padding-md;
+
+      h1 {
+        font-size: @font-size-base + 12;
+        font-weight: normal;
+      }
+
+      .meta {
+        padding: @padding-xs 0 @padding-sm;
+        color: @text-color-secondary;
+
+        .metaItem {
+          margin-right: @padding-lg;
+
+          a {
+            color: @text-color-secondary;
+
+            &:hover {
+              color: @text-color;
+            }
+          }
+        }
+      }
     }
 
     .coverImg {
@@ -79,25 +99,6 @@
         color: @text-color-secondary;
         margin-bottom: @padding-md;
         font-style: italic;
-      }
-    }
-
-    .meta {
-      border-top: 1px solid @border-color-split;
-      border-bottom: 1px solid @border-color-split;
-      padding: @padding-sm 0;
-      color: @text-color-secondary;
-
-      .metaItem {
-        margin-right: @padding-lg;
-
-        a {
-          color: @text-color-secondary;
-
-          &:hover {
-            color: @text-color;
-          }
-        }
       }
     }
   }

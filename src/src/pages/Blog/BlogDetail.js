@@ -113,7 +113,25 @@ class BlogDetail extends Component {
         <div className={styles.content}>
           {articleDetail && (
             <div className={styles.article}>
-              <h1 className={styles.title}>{articleDetail.title}</h1>
+              <div className={styles.title}>
+                <h1>{articleDetail.title}</h1>
+                <div className={styles.meta}>
+                  <span className={styles.metaItem}>
+                    <Icon type="calendar" /> {articleDetail.publishDT}
+                  </span>
+                  <span className={styles.metaItem}>
+                    <Icon type="folder" />{' '}
+                    <Link to={`/blogs/category#${articleDetail.category.slug}`}>
+                      {articleDetail.category.name}
+                    </Link>
+                  </span>
+                  {articleDetail.commentCount !== 0 && (
+                    <span className={styles.metaItem}>
+                      <Icon type="message" /> {articleDetail.commentCount}
+                    </span>
+                  )}
+                </div>
+              </div>
 
               {articleDetail.coverImg && (
                 <div className={styles.coverImg}>
@@ -124,23 +142,6 @@ class BlogDetail extends Component {
 
               <div className="markdownContent">
                 <div dangerouslySetInnerHTML={{ __html: articleDetail.content }} />
-              </div>
-
-              <div className={styles.meta}>
-                <span className={styles.metaItem}>
-                  <Icon type="calendar" /> {articleDetail.publishDT}
-                </span>
-                <span className={styles.metaItem}>
-                  <Icon type="folder" />{' '}
-                  <Link to={`/blogs/category#${articleDetail.category.slug}`}>
-                    {articleDetail.category.name}
-                  </Link>
-                </span>
-                {articleDetail.commentCount !== 0 && (
-                  <span className={styles.metaItem}>
-                    <Icon type="message" /> {articleDetail.commentCount}
-                  </span>
-                )}
               </div>
             </div>
           )}

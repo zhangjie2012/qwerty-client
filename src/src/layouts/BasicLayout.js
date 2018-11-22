@@ -125,11 +125,13 @@ class BasicLayout extends React.PureComponent {
   }
 
   getPageTitle = (pathname, title) => {
-    const currRouterData = this.matchParamsPath(pathname);
-    if (!currRouterData) {
-      return title;
+    let label = '';
+    for (const item of this.getMenuData()) {
+      if (item.matchPaths.some(path => pathname.startsWith(path))) {
+        label = item.label; /* eslint-disable-line */
+      }
     }
-    return `${title} - ${currRouterData.label}`;
+    return `${title} - ${label}`;
   };
 
   matchParamsPath = pathname => {
