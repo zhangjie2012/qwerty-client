@@ -11,7 +11,7 @@ qwerty is a full website solution for programmer, [more information](https://git
 3. configure nginx:
     + [x] qwerty-server has run, get running `ip:port`
     + [x] index leading to the right dist path
-    + [x] api/__adm proxy_pass to server
+    + [x] `api/__adm` proxy_pass to server
     + [x] django-admin static css/js file leading to the right path
 
 maybe nginx config file like this:
@@ -34,6 +34,10 @@ server {
     }
 
     location /server/ {
+        proxy_set_header X-Real-Ip $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $host;
+        proxy_set_header REMOTE_ADDR $remote_addr;
         proxy_pass http://127.0.0.1:8080/;
         client_max_body_size    64m;
     }
@@ -48,4 +52,4 @@ server {
 }
 ```
 
-对于国内用户（`dist/index.html`），`https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js` 访问速度比较慢，建议换成七牛的地址：`https://cdn.staticfile.org/less.js/2.7.3/less.min.js`。
+对于中国用户（`dist/index.html`），`https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js` 访问速度比较慢，建议换成七牛的地址：`https://cdn.staticfile.org/less.js/2.7.3/less.min.js`。
