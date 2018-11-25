@@ -49,6 +49,7 @@ class BlogList extends Component {
     const { articleList } = this.props.blog;
     return (
       <div className={styles.content}>
+        <div className={styles.pageTitle}>BLOGS</div>
         <Spin spinning={loadingBlogs}>
           <div className={styles.blogList}>
             {articleList.map(item => {
