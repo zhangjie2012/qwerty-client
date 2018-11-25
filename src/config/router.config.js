@@ -28,6 +28,18 @@ export default [
         hideInMenu: true,
       },
       {
+        path: '/topics',
+        name: 'topics',
+        label: '主题',
+        matchPaths: ['/topics', '/topic'],
+        component: './Topic/Topics',
+      },
+      {
+        path: '/topic/:id',
+        component: './Topic/Comments',
+        hideInMenu: true,
+      },
+      {
         path: '/microblogs',
         name: 'microblogs',
         label: '微博',

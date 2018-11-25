@@ -1,0 +1,121 @@
+@import '~antd/lib/style/themes/default.less';
+
+@border-color-split: #f0f0f0;
+
+.content {
+  .pageTitle {
+    padding: @padding-lg 0;
+    text-align: center;
+    border-bottom: 1px solid @border-color-split;
+    font-style: italic;
+  }
+
+  .topicOpen {
+    color: @processing-color;
+  }
+
+  .topicClose {
+    color: @highlight-color;
+  }
+
+  .topicList {
+    .commentRow {
+      padding: @padding-xs 0;
+      border-bottom: 1px solid @border-color-split;
+
+      .topicTitle {
+        padding-bottom: 5px;
+
+        a {
+          color: @heading-color;
+
+          &:hover {
+            color: @text-color;
+          }
+        }
+      }
+
+      .topicMeta {
+        color: @text-color-secondary;
+        font-size: @font-size-sm;
+      }
+
+      .topicTag {
+        font-size: @font-size-sm;
+        margin-left: @padding-xs;
+      }
+
+      .commentCount {
+        text-align: right;
+        color: @text-color-secondary;
+      }
+    }
+  }
+
+  .comment {
+    margin: @padding-lg 0;
+
+    .title {
+      border-bottom: 1px solid @border-color-split;
+      margin-bottom: @padding-md;
+
+      h1 {
+        margin: 0 0;
+        padding: 0 0;
+        font-size: @font-size-base + 12;
+        font-weight: normal;
+
+        .bash {
+          color: @text-color-secondary;
+          margin-left: @padding-xs;
+        }
+      }
+
+      .meta {
+        padding: @padding-xs 0 @padding-sm;
+        color: @text-color-secondary;
+      }
+    }
+
+    .commentList {
+      .commentBlock {
+        border-radius: @border-radius-base;
+        border: 1px solid @border-color-base;
+        margin-bottom: @padding-md;
+
+        .commentMeta {
+          border-radius: @border-radius-base @border-radius-base 0 0;
+          background: #f8f8f8;
+          padding: @padding-xs;
+          border-bottom: 1px solid @border-color-base;
+          font-size: @font-size-sm;
+          color: @text-color-secondary;
+        }
+
+        .commentContent {
+          padding: 0 @padding-sm;
+
+          h2 {
+            margin: @padding-md 0 !important;
+          }
+
+          p:first-child {
+            margin-top: @padding-sm;
+          }
+        }
+      }
+
+      .commentRel {
+        margin-top: -@padding-xs;
+        padding-left: @padding-lg;
+        margin-bottom: @padding-md;
+
+        .commentAltIcon {
+          font-size: @font-size-lg;
+          margin-right: @padding-xs;
+          color: @highlight-color;
+        }
+      }
+    }
+  }
+}
