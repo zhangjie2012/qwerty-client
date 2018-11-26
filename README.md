@@ -13,43 +13,53 @@ qwerty is a full website solution for programmer, [more information](https://git
     + [x] index leading to the right dist path
     + [x] `api/__adm` proxy_pass to server
     + [x] django-admin static css/js file leading to the right path
+4. `nginx -s reload`
 
 maybe nginx config file like this:
 
 ``` nginx
 server {
-    server_name www.xxx.com;
+  server_name www.xxx.com;
 
-    root /data/qwerty/dist;
+  gzip on;
+  gzip_min_length 1k;
+  gzip_comp_level 9;
+  gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;
+  gzip_vary on;
+  gzip_disable "MSIE [1-6]\.";
 
-    location / {
-        gzip_static on;
-        try_files $uri @index;
-    }
+  root /data/qwerty/dist;
 
-    location @index {
-        add_header Cache-Control no-cache;
-        expires 0;
-        try_files /index.html =404;
-    }
+  location / {
+    gzip_static on;
+    try_files $uri @index;
+  }
 
-    location /server/ {
-        proxy_set_header X-Real-Ip $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header Host $host;
-        proxy_set_header REMOTE_ADDR $remote_addr;
-        proxy_pass http://127.0.0.1:8080/;
-        client_max_body_size    64m;
-    }
+  location @index {
+    add_header Cache-Control no-cache;
+    expires 0;
+    try_files /index.html =404;
+  }
 
-    location /__adm/ {
-        proxy_pass http://127.0.0.1:8080;
-    }
+  location /server/ {
+    proxy_pass http://127.0.0.1:8080/;
+    proxy_set_header   X-Forwarded-Proto $scheme;
+    proxy_set_header   Host              $http_host;
+    proxy_set_header   X-Real-IP         $remote_addr;
+    client_max_body_size    64m;
+  }
 
-    location /static {
-        alias /data/static; # put django admin css/js file in here
-    }
+  location /__adm/ {
+    proxy_pass http://127.0.0.1:8080;
+    proxy_set_header   X-Forwarded-Proto $scheme;
+    proxy_set_header   Host              $http_host;
+    proxy_set_header   X-Real-IP         $remote_addr;
+  }
+
+  location /static {
+    alias /data/static;
+  }
 }
 ```
 
-对于中国用户（`dist/index.html`），`https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js` 访问速度比较慢，建议换成七牛的地址：`https://cdn.staticfile.org/less.js/2.7.3/less.min.js`。
+more build and deploy look [Pro Build & Deploy](https://pro.ant.design/docs/deploy) document.
