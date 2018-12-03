@@ -1,7 +1,5 @@
 @import '~antd/lib/style/themes/default.less';
 
-@border-color-split: #f0f0f0;
-
 .content {
   .pageTitle {
     padding: @padding-lg 0;
@@ -19,6 +17,8 @@
   }
 
   .topicList {
+    padding-bottom: @padding-lg;
+
     .commentRow {
       padding: @padding-xs 0;
       border-bottom: 1px solid @border-color-split;
@@ -41,7 +41,7 @@
       }
 
       .topicTag {
-        font-size: @font-size-sm;
+        font-size: @font-size-sm !important;
         margin-left: @padding-xs;
       }
 
@@ -99,7 +99,8 @@
             margin: @padding-md 0 !important;
           }
 
-          p:first-child {
+          p:first-child,
+          ul:first-child {
             margin-top: @padding-sm;
           }
         }

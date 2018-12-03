@@ -1,7 +1,5 @@
 @import '~antd/lib/style/themes/default.less';
 
-@border-color-split: #f0f0f0;
-
 .content {
   .blogRow {
     padding: @padding-lg 0;
@@ -119,6 +117,17 @@
       .formRow {
         margin-bottom: @padding-sm;
       }
+    }
+  }
+
+  .archiveRow {
+    h2 {
+      font-size: @font-size-base + 8;
+      margin: @padding-md 0 (@padding-md - 4) 0 !important;
+    }
+
+    &:last-child {
+      padding-bottom: @padding-lg;
     }
   }
 }
