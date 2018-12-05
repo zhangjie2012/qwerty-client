@@ -12,7 +12,7 @@
 
   .microblogRow {
     border-bottom: 1px solid @border-color-split;
-    padding: @padding-sm 0;
+    padding-top: @padding-sm;
 
     .microblogMeta {
       color: @text-color-secondary;
@@ -29,8 +29,16 @@
     }
 
     .microblogContent {
-      text-align: justify;
-      white-space: pre-wrap;
+      h2 {
+        margin: @padding-md 0 !important;
+        padding-bottom: 4px;
+        border-bottom: 1px solid @border-color-split;
+      }
+
+      p:first-child,
+      ul:first-child {
+        margin-top: @padding-sm;
+      }
     }
   }
 

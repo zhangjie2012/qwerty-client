@@ -92,7 +92,12 @@ class MicroblogList extends Component {
                     <img alt="" src={microblog.cover_img} />
                   </div>
                 )}
-                <div className={styles.microblogContent}>{microblog.content}</div>
+                <div className={styles.microblogContent}>
+                  <div
+                    className="markdownContent"
+                    dangerouslySetInnerHTML={{ __html: microblog.content }}
+                  />
+                </div>
               </div>
             );
           })}
