@@ -3,7 +3,6 @@ import { message } from 'antd';
 import {
   queryBlogs,
   queryBlogDetail,
-  queryBlogComments,
   queryArchiveBlogs,
   queryBlogCategory,
   addComment,
@@ -42,18 +41,6 @@ export default {
       if (response.status === 'ok') {
         yield put({
           type: 'saveBlog',
-          payload: response.data,
-        });
-      } else {
-        message.error(`出错啦：${response.message}`);
-      }
-    },
-
-    *fetchBlogComments({ payload }, { call, put }) {
-      const response = yield call(queryBlogComments, payload);
-      if (response.status === 'ok') {
-        yield put({
-          type: 'saveComments',
           payload: response.data,
         });
       } else {
@@ -123,6 +110,8 @@ export default {
     },
 
     saveBlog(state, { payload }) {
+      // eslint-disable-next-line
+      const { comment_list } = payload;
       const articleDetail = {
         title: payload.title,
         publishDT: moment(payload.publish_dt).format('YYYY-MM-DD HH:mm:ss'),
@@ -131,11 +120,20 @@ export default {
         coverImg: payload.cover_img,
         imgCopyRight: payload.img_copyright,
         content: payload.content,
-        commentCount: payload.comment_count,
+        commentCount: comment_list.length,
       };
+      const comments = [];
+      // eslint-disable-next-line
+      for (const item of comment_list) {
+        comments.push({
+          ...item,
+          publishDT: moment(item.publish_dt).format('YYYY年MM月DD日 HH:mm'),
+        });
+      }
       return {
         ...state,
         articleDetail,
+        comments,
       };
     },
 
@@ -144,20 +142,6 @@ export default {
         ...state,
         articleDetail: null,
         comments: [],
-      };
-    },
-
-    saveComments(state, { payload }) {
-      const comments = [];
-      for (const item of payload) {
-        comments.push({
-          ...item,
-          publishDT: moment(item.publish_dt).format('YYYY年MM月DD日 HH:mm'),
-        });
-      }
-      return {
-        ...state,
-        comments,
       };
     },
 

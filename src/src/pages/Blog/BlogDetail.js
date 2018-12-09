@@ -70,13 +70,6 @@ class BlogDetail extends Component {
         },
       },
     });
-
-    this.props.dispatch({
-      type: 'blog/fetchBlogComments',
-      payload: {
-        slug,
-      },
-    });
   }
 
   componentWillUnmount() {
