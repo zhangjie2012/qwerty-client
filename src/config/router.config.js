@@ -47,6 +47,13 @@ export default [
         component: './Microblog/MicroblogList',
       },
       {
+        path: '/resume',
+        name: 'resume',
+        label: '简历',
+        matchPaths: ['/resume'],
+        component: './Resume/Resume',
+      },
+      {
         name: 'exception',
         path: '/exception',
         hideInMenu: true,
