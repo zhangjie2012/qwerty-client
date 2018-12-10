@@ -40,8 +40,6 @@ body {
     padding: 0;
   }
 
-  @border-color-split: #f0f0f0;
-
   .markdownContent {
     h1,
     h2,
@@ -104,9 +102,8 @@ body {
     }
 
     blockquote {
-      padding: 0 @padding-md;
-      margin: @padding-md 0;
-      border-left: 2px solid rgba(40, 50, 60, 0.85);
+      padding-left: @padding-sm;
+      border-left: 2px solid @border-color-base;
       overflow: auto;
       word-wrap: break-word;
     }
@@ -117,6 +114,11 @@ body {
       &:last-child {
         margin-bottom: 0;
       }
+    }
+
+    ul,
+    ol {
+      padding-left: 20px;
     }
   }
 }

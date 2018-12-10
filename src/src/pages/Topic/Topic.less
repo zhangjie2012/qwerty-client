@@ -93,17 +93,20 @@
         }
 
         .commentContent {
-          padding: 0 @padding-sm;
+          padding: @padding-sm;
 
           h2 {
-            margin: @padding-md 0 !important;
             padding-bottom: 4px;
             border-bottom: 1px solid @border-color-split;
+
+            &:first-child {
+              margin-top: @padding-md - @padding-sm !important;
+            }
           }
 
-          p:first-child,
-          ul:first-child {
-            margin-top: @padding-sm;
+          p:last-child,
+          ul:last-child {
+            margin-bottom: 0;
           }
         }
       }
