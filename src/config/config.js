@@ -95,6 +95,7 @@ export default {
       return localName;
     },
   },
+  hash: true,
   manifest: {
     basePath: '/',
   },
