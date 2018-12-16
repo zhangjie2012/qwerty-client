@@ -1,0 +1,40 @@
+@import '~antd/lib/style/themes/default.less';
+
+.content {
+  .pageTitle {
+    padding: @padding-lg 0;
+    text-align: center;
+    border-bottom: 1px solid @border-color-base;
+    font-style: italic;
+  }
+
+  .user {
+    padding: @padding-lg 0;
+
+    ul {
+      padding-left: 0;
+      line-height: @font-size-base + 12;
+      list-style: none;
+
+      .tag {
+        border-right: 2px solid @border-color-split;
+        padding: 0 @padding-xs;
+
+        &:first-child {
+          padding-left: 0;
+        }
+
+        &:last-child {
+          border-right: none;
+        }
+      }
+    }
+
+    img {
+      border: 1px solid @border-color-split;
+      padding: 5px;
+      max-width: 100%;
+      border-radius: @border-radius-base;
+    }
+  }
+}

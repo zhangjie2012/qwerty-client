@@ -54,6 +54,13 @@ export default [
         component: './Resume/Resume',
       },
       {
+        path: '/about',
+        name: 'about',
+        label: '关于',
+        matchPaths: ['/about'],
+        component: './About/About',
+      },
+      {
         name: 'exception',
         path: '/exception',
         hideInMenu: true,
