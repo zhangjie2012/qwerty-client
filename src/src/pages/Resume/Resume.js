@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'dva';
 import { Spin } from 'antd';
+import classNames from 'classnames';
 import styles from './Resume.less';
 
 @connect(({ resume, loading }) => ({
@@ -21,7 +22,7 @@ class Resume extends Component {
       <div className={styles.content}>
         <div className={styles.pageTitle}>RESUME</div>
         <Spin spinning={loadingResume}>
-          <div className={styles.expBlock}>
+          <div className={classNames(styles.expBlock, 'markdownContent')}>
             <h2>工作经历</h2>
             {jobList.map(job => {
               return (
@@ -36,19 +37,15 @@ class Resume extends Component {
                     {job.title} | {job.duties}
                   </div>
                   <h4>产品</h4>
-                  <div className="markdownContent">
-                    <div dangerouslySetInnerHTML={{ __html: job.product }} />
-                  </div>
+                  <div dangerouslySetInnerHTML={{ __html: job.product }} />
                   <h4>技术栈</h4>
-                  <div className="markdownContent">
-                    <div dangerouslySetInnerHTML={{ __html: job.tech_stack }} />
-                  </div>
+                  <div dangerouslySetInnerHTML={{ __html: job.tech_stack }} />
                 </Fragment>
               );
             })}
           </div>
 
-          <div className={styles.expBlock}>
+          <div className={classNames(styles.expBlock, 'markdownContent')}>
             <h2>教育经历</h2>
             {educationList.map(education => {
               return (

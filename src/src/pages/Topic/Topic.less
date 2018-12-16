@@ -4,7 +4,7 @@
   .pageTitle {
     padding: @padding-lg 0;
     text-align: center;
-    border-bottom: 1px solid @border-color-split;
+    border-bottom: 1px solid @border-color-base;
     font-style: italic;
   }
 
@@ -21,7 +21,7 @@
 
     .commentRow {
       padding: @padding-xs 0;
-      border-bottom: 1px solid @border-color-split;
+      border-bottom: 1px solid @border-color-base;
 
       .topicTitle {
         padding-bottom: 5px;
@@ -93,20 +93,13 @@
         }
 
         .commentContent {
-          padding: @padding-sm;
+          padding: 0 @padding-md;
 
           h2 {
             padding-bottom: 4px;
             border-bottom: 1px solid @border-color-split;
 
-            &:first-child {
-              margin-top: @padding-md - @padding-sm !important;
-            }
-          }
-
-          p:last-child,
-          ul:last-child {
-            margin-bottom: 0;
+            margin: @padding-md 0 !important;
           }
         }
       }

@@ -59,16 +59,21 @@ body {
     }
 
     h3 {
-      font-size: @font-size-base + 4;
+      border-left: 4px solid #67b6ff;
+      padding-left: @padding-sm;
+      font-size: @font-size-base + 6;
+      line-height: @font-size-base + 10;
       margin: 20px 0 20px !important;
     }
 
     h4 {
       font-size: @font-size-base + 2 !important;
-      margin: 20px 0 20px;
+      margin: @padding-md 0;
     }
 
     p {
+      margin: @padding-md 0;
+      line-height: @font-size-base + 10;
       text-align: justify;
     }
 
@@ -78,19 +83,18 @@ body {
       page-break-inside: avoid;
       max-width: 100%;
       border: 1px solid @border-color-split;
-      margin: 0 auto;
+      margin: @padding-md auto;
     }
 
     pre,
     code {
       font-size: @font-size-base - 1;
       color: @text-color;
-      background-color: #eef;
-      border-radius: 2px;
+      background-color: @background-color-light;
     }
 
     pre {
-      padding: @padding-md;
+      padding: @padding-xs;
     }
 
     code {
@@ -102,23 +106,28 @@ body {
     }
 
     blockquote {
-      padding-left: @padding-sm;
+      background-color: @background-color-light;
+      padding: @padding-sm;
+      color: @text-color-secondary;
       border-left: 2px solid @border-color-base;
       overflow: auto;
       word-wrap: break-word;
     }
 
     blockquote p {
-      color: @text-color-secondary;
-
       &:last-child {
         margin-bottom: 0;
+      }
+
+      &:first-child {
+        margin-top: 0;
       }
     }
 
     ul,
     ol {
       padding-left: 20px;
+      margin: @padding-md 0;
     }
   }
 }
