@@ -34,7 +34,7 @@ class Topics extends Component {
                     </Tooltip>
                   ) : (
                     <Tooltip title="更新中">
-                      <Icon type="exclamation-circle" className={styles.topicOpen} />
+                      <Icon type="clock-circle" className={styles.topicOpen} />
                     </Tooltip>
                   )}
                 </Col>
