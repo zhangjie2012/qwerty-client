@@ -42,7 +42,7 @@ class BlogCategory extends Component {
               return (
                 <div key={item.category.slug} className={styles.archiveRow}>
                   <h2 id={item.category.slug}>{item.category.name}</h2>
-                  <ul>
+                  <ul style={{ paddingLeft: 20, marginBottom: 0 }}>
                     {item.articles.map(article => {
                       return (
                         <li key={article.slug}>

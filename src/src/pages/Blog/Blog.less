@@ -1,13 +1,14 @@
 @import '~antd/lib/style/themes/default.less';
 
+ul.blogMeta {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
 .content {
   .blogRow {
     padding: @padding-lg 0;
     border-bottom: 1px solid @border-color-base;
-
-    .blogMeta {
-      margin-bottom: @padding-xs;
-    }
 
     .blogTitle {
       margin-bottom: @padding-xs;
@@ -35,7 +36,8 @@
     border-bottom: 2px solid @border-color-base;
 
     .title {
-      border-bottom: 1px solid @border-color-base;
+      border-bottom: 2px solid @border-color-base;
+      padding-bottom: @padding-sm;
       margin-bottom: @padding-md;
 
       h1 {
@@ -43,23 +45,6 @@
         padding: 0 0;
         font-size: @font-size-base + 12;
         font-weight: normal;
-      }
-
-      .meta {
-        padding: @padding-xs 0 @padding-sm;
-        color: @text-color-secondary;
-
-        .metaItem {
-          margin-right: @padding-lg;
-
-          a {
-            color: @text-color-secondary;
-
-            &:hover {
-              color: @text-color;
-            }
-          }
-        }
       }
     }
 

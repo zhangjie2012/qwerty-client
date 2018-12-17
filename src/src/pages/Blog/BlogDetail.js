@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'dva';
-import { Spin, Icon, Form, Input, Button } from 'antd';
+import { Spin, Icon, Form, Input, Button, Row, Col, Modal } from 'antd';
 import Link from 'umi/link';
 import styles from './Blog.less';
 
@@ -58,6 +58,7 @@ const PostCommentForm = props => {
 class BlogDetail extends Component {
   state = {
     slug: this.props.match.params.slug,
+    metaVisible: false,
   };
 
   componentDidMount() {
@@ -95,7 +96,14 @@ class BlogDetail extends Component {
     this.props.form.resetFields();
   };
 
+  showMeta = flag => {
+    this.setState({
+      metaVisible: !!flag,
+    });
+  };
+
   render() {
+    const { metaVisible } = this.state;
     const {
       blog: { articleDetail, comments },
       loadingBlog,
@@ -107,24 +115,45 @@ class BlogDetail extends Component {
           {articleDetail && (
             <div className={styles.article}>
               <div className={styles.title}>
-                <h1>{articleDetail.title}</h1>
-                <div className={styles.meta}>
-                  <span className={styles.metaItem}>
-                    <Icon type="calendar" /> {articleDetail.publishDT}
-                  </span>
-                  <span className={styles.metaItem}>
-                    <Icon type="folder" />{' '}
+                <Row gutter={8} type="flex" align="bottom">
+                  <Col span={23}>
+                    <h1>{articleDetail.title}</h1>
+                  </Col>
+                  <Col span={1} style={{ textAlign: 'right' }}>
+                    <a onClick={this.showMeta}>
+                      <Icon type="info-circle" />
+                    </a>
+                  </Col>
+                </Row>
+              </div>
+
+              <Modal
+                title={articleDetail.title}
+                onCancel={() => this.showMeta(false)}
+                visible={metaVisible}
+                footer={null}
+              >
+                <ul className={styles.blogMeta}>
+                  <li>
+                    文章分类：
                     <Link to={`/blogs/category#${articleDetail.category.slug}`}>
                       {articleDetail.category.name}
                     </Link>
-                  </span>
-                  {articleDetail.commentCount !== 0 && (
-                    <span className={styles.metaItem}>
-                      <Icon type="message" /> {articleDetail.commentCount}
-                    </span>
-                  )}
-                </div>
-              </div>
+                  </li>
+                  <li>
+                    评论数量：
+                    {articleDetail.commentCount}
+                  </li>
+                  <li>
+                    发布时间：
+                    {articleDetail.publishDT}
+                  </li>
+                  <li>
+                    更新时间：
+                    {articleDetail.updateDT}
+                  </li>
+                </ul>
+              </Modal>
 
               {articleDetail.coverImg && (
                 <div className={styles.coverImg}>

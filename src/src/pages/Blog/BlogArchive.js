@@ -32,7 +32,7 @@ class BlogArchive extends Component {
               return (
                 <div key={item.year} className={styles.archiveRow}>
                   <h2>{item.year}</h2>
-                  <ul>
+                  <ul style={{ paddingLeft: 20, marginBottom: 0 }}>
                     {item.articles.map(article => {
                       return (
                         <li key={article.slug}>
