@@ -32,7 +32,7 @@
 
   .article {
     padding-top: @padding-lg;
-    border-bottom: 1px solid @border-color-base;
+    border-bottom: 2px solid @border-color-base;
 
     .title {
       border-bottom: 1px solid @border-color-base;
@@ -81,34 +81,34 @@
 
   .comment {
     .commentDivHeader {
-      font-size: @font-size-lg;
-      padding: @padding-md 0;
+      font-size: @font-size-base + 6;
+      margin: @padding-md 0;
       color: @heading-color;
     }
 
     .commentRow {
       .commentMeta {
-        margin-bottom: @padding-sm - 4;
+        margin: @padding-md 0;
+        border-left: 4px solid #67b6ff;
+        padding-left: @padding-xs + 2;
+        font-size: @font-size-lg + 2;
+        line-height: @font-size-lg + 2;
+
+        .commentDate {
+          font-size: @font-size-base;
+          color: @text-color-secondary;
+        }
       }
 
       .commentContent {
-        margin-bottom: @padding-sm;
-
-        p {
-          text-align: justify;
-        }
-
-        p:last-of-type {
-          margin-bottom: 0;
-        }
-
         h1,
         h2,
         h3,
         h4,
         h5 {
-          font-size: @font-size-base + 2;
-          margin: 20px 0 20px;
+          font-size: @font-size-base;
+          margin: @padding-md 0 !important;
+          font-weight: bold;
         }
       }
     }
