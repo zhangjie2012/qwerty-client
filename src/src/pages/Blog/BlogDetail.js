@@ -12,11 +12,11 @@ const PostCommentForm = props => {
 
     form.validateFields((err, values) => {
       if (!err) {
-        let { username, website, comment } = values; /* eslint-disable-line */
+        let { username, email, website, comment } = values; /* eslint-disable-line */
         if (typeof website === 'undefined') {
           website = '';
         }
-        postComment(username, website, comment);
+        postComment(username, email, website, comment);
       }
     });
   };
@@ -27,6 +27,11 @@ const PostCommentForm = props => {
         {form.getFieldDecorator('username', {
           rules: [{ required: true }],
         })(<Input placeholder="姓名（必填）" />)}
+      </Form.Item>
+      <Form.Item className={styles.formRow}>
+        {form.getFieldDecorator('email', {
+          rules: [{ required: true }],
+        })(<Input placeholder="邮箱（必填）" />)}
       </Form.Item>
       <Form.Item className={styles.formRow}>
         {form.getFieldDecorator('website', {})(<Input placeholder="网站（选填）" />)}
@@ -79,13 +84,14 @@ class BlogDetail extends Component {
     });
   }
 
-  postComment = (username, website, comment) => {
+  postComment = (username, email, website, comment) => {
     const { slug } = this.state;
     this.props.dispatch({
       type: 'blog/addComment',
       payload: {
         params: {
           slug,
+          email,
           username,
           website,
           comment,
