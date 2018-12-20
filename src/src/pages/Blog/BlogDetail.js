@@ -169,29 +169,39 @@ class BlogDetail extends Component {
           )}
           <div className={styles.comment}>
             {comments.length !== 0 && <div className={styles.commentDivHeader}>评论列表</div>}
-            {comments.length !== 0 &&
-              comments.map(comment => {
-                return (
-                  <div key={comment.publish_dt} className={styles.commentRow}>
-                    <div className={styles.commentMeta}>
-                      {comment.website.length !== 0 ? (
-                        <a href={comment.website} target="_blank" rel="noopener noreferrer">
-                          {comment.username}
-                        </a>
-                      ) : (
-                        comment.username
-                      )}
-                      <span className={styles.commentDate}>（{comment.publishDT}）</span>
+            {comments.length !== 0 && (
+              <div>
+                {comments.map(comment => {
+                  return (
+                    <div key={comment.publish_dt} className={styles.commentRow}>
+                      <div className={styles.commentMeta}>
+                        <div className={styles.avatar}>
+                          <img alt={comment.username} src={comment.avatar} />
+                        </div>
+                        <div className={styles.userInfo}>
+                          <div className={styles.commentUser}>
+                            {comment.website.length !== 0 ? (
+                              <a href={comment.website} target="_blank" rel="noopener noreferrer">
+                                {comment.username}
+                              </a>
+                            ) : (
+                              comment.username
+                            )}
+                          </div>
+                          <div className={styles.commentDate}>{comment.publishDT}</div>
+                        </div>
+                      </div>
+                      <div className={styles.commentContent}>
+                        <div
+                          className="markdownContent"
+                          dangerouslySetInnerHTML={{ __html: comment.content }}
+                        />
+                      </div>
                     </div>
-                    <div className={styles.commentContent}>
-                      <div
-                        className="markdownContent"
-                        dangerouslySetInnerHTML={{ __html: comment.content }}
-                      />
-                    </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
+            )}
 
             {articleDetail && (
               <Fragment>
