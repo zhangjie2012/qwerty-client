@@ -51,6 +51,8 @@ class Topics extends Component {
                   </div>
                 </Col>
                 <Col span={2} className={styles.commentCount}>
+                  {!item.archive &&
+                    item.pin && <Icon type="pushpin" theme="twoTone" className={styles.topicPin} />}
                   <Icon type="message" /> {item.comment_count}
                 </Col>
               </Row>

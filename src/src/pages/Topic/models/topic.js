@@ -45,7 +45,7 @@ export default {
         const createDT = moment(topic.create_dt).format('YYYY-MM-DD HH:mm');
         const updateDT = moment(topic.update_dt).format('YYYY-MM-DD HH:mm');
         topicList.push({
-          ...topic /* id, title, archive, comment_count, tags[{name, slug}] */,
+          ...topic /* id, title, pin, archive, comment_count, tags[{name, slug}] */,
           createDT,
           updateDT,
         });
