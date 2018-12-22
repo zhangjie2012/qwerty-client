@@ -1,5 +1,10 @@
 @import '~antd/lib/style/themes/default.less';
 
+ul.commentMeta {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
 .content {
   .pageTitle {
     padding: @padding-lg 0;
@@ -20,12 +25,10 @@
     padding-bottom: @padding-lg;
 
     .commentRow {
-      padding: @padding-sm 0;
+      padding: @padding-md 0;
       border-bottom: 1px solid @border-color-base;
 
       .topicTitle {
-        padding-bottom: 5px;
-
         a {
           color: @heading-color;
 
@@ -62,7 +65,9 @@
       h1 {
         margin: 0 0;
         padding: 0 0;
+        padding-bottom: @padding-sm;
         font-size: @font-size-base + 12;
+        line-height: @font-size-base + 12;
         font-weight: normal;
 
         .bash {
@@ -72,7 +77,6 @@
       }
 
       .meta {
-        padding: @padding-xs 0 @padding-sm;
         color: @text-color-secondary;
       }
     }

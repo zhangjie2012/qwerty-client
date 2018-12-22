@@ -49,9 +49,6 @@ class Topics extends Component {
                       );
                     })}
                   </div>
-                  <div className={styles.topicMeta}>
-                    #{item.id} 创建于 {item.createDT} 更新于 {item.updateDT}
-                  </div>
                 </Col>
                 <Col span={2} className={styles.commentCount}>
                   <Icon type="message" /> {item.comment_count}
