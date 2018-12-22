@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'dva';
 import Link from 'umi/link';
 import { Row, Col, Icon, Spin, Tooltip, Modal } from 'antd';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { goToAnchor } from 'react-scrollable-anchor';
 import styles from './Topic.less';
 
 @connect(({ topic, loading }) => ({
@@ -24,6 +26,16 @@ class Comments extends Component {
         },
       },
     });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.topic !== this.props.topic) {
+      let { hash } = this.props.location;
+      hash = hash.slice(1);
+      if (hash.length !== 0) {
+        goToAnchor(hash);
+      }
+    }
   }
 
   showMeta = flag => {
@@ -82,7 +94,9 @@ class Comments extends Component {
                   <li>
                     主题标签：
                     {currentTopic.tags.map(tag => (
-                      <span style={{ marginRight: 6 }}>{tag.name}</span>
+                      <span key={tag.name} style={{ marginRight: 6 }}>
+                        {tag.name}
+                      </span>
                     ))}
                   </li>
                 )}
@@ -105,12 +119,14 @@ class Comments extends Component {
               {commentList.map(comment => {
                 return (
                   <Fragment key={comment.id}>
-                    <div className={styles.commentBlock}>
+                    <div className={styles.commentBlock} id={comment.id}>
                       <div className={styles.commentMeta}>
                         <Row>
                           <Col span={20}>{comment.createDT}</Col>
                           <Col span={4} style={{ textAlign: 'right' }}>
-                            #{comment.id}
+                            <CopyToClipboard text={`${window.location.href}`}>
+                              <a href={`#${comment.id}`}>#{comment.id}</a>
+                            </CopyToClipboard>
                           </Col>
                         </Row>
                       </div>
