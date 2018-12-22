@@ -8,6 +8,7 @@ export default {
   state: {
     currentPage: 0,
     totalPages: 0,
+    avatar: '',
     microblogList: [] /* id, cover_img, content, publishDT */,
   },
 
@@ -28,6 +29,7 @@ export default {
   reducers: {
     saveList(state, { payload }) {
       const {
+        avatar,
         current_page_num: currentPage,
         total_pages: totalPages,
         microblog_list: microblogList,
@@ -41,6 +43,7 @@ export default {
 
       return {
         ...state,
+        avatar,
         currentPage,
         totalPages,
         microblogList: microblogListBak,

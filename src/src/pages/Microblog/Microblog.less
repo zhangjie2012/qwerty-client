@@ -12,18 +12,49 @@
 
   .microblogRow {
     border-bottom: 1px solid @border-color-base;
-    padding-top: @padding-sm;
+    padding: @padding-md 0;
 
-    .microblogMeta {
-      color: @text-color-secondary;
-      font-size: @font-size-sm;
-      margin-bottom: @padding-sm;
+    .avatar {
+      float: left;
+      width: 45px;
+
+      img {
+        max-width: 100%;
+        border-radius: @border-radius-base;
+      }
     }
 
-    .microblogImg {
-      img {
-        box-sizing: border-box;
-        width: 100%;
+    .microblog {
+      margin-left: 61px;
+
+      .meta {
+        color: @text-color-secondary;
+        line-height: @font-size-base;
+      }
+
+      .coverImg {
+        img {
+          box-sizing: border-box;
+          width: 100%;
+          margin-top: @padding-sm;
+        }
+      }
+
+      .microContent {
+        ul,
+        ol,
+        p {
+          margin: @padding-sm 0;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+
+        ul,
+        ol {
+          padding-left: 20px;
+        }
       }
     }
   }

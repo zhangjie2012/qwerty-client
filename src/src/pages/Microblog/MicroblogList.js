@@ -47,7 +47,7 @@ class MicroblogList extends Component {
   };
 
   render() {
-    const { microblogList, currentPage, totalPages } = this.props.microblog;
+    const { avatar, microblogList, currentPage, totalPages } = this.props.microblog;
     const { loadingMicroblogs } = this.props;
 
     const Pagination = () => {
@@ -84,19 +84,22 @@ class MicroblogList extends Component {
           {microblogList.map(microblog => {
             return (
               <div key={microblog.id} className={styles.microblogRow}>
-                <div className={styles.microblogMeta}>
-                  <Icon type="calendar" /> {microblog.publishDT}
+                <div className={styles.avatar}>
+                  <img alt={avatar} src={avatar} />
                 </div>
-                {microblog.cover_img && (
-                  <div className={styles.microblogImg}>
-                    <img alt="" src={microblog.cover_img} />
+                <div className={styles.microblog}>
+                  <div className={styles.meta}>{microblog.publishDT}</div>
+                  {microblog.cover_img && (
+                    <div className={styles.coverImg}>
+                      <img alt={microblog.cover_img} src={microblog.cover_img} />
+                    </div>
+                  )}
+                  <div className={styles.microContent}>
+                    <div
+                      className="markdownContent"
+                      dangerouslySetInnerHTML={{ __html: microblog.content }}
+                    />
                   </div>
-                )}
-                <div className={styles.microblogContent}>
-                  <div
-                    className="markdownContent"
-                    dangerouslySetInnerHTML={{ __html: microblog.content }}
-                  />
                 </div>
               </div>
             );
