@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'dva';
-import { Spin, Icon, Form, Input, Button, Row, Col, Modal } from 'antd';
+import { Spin, Icon, Form, Input, Button, Row, Col, Modal, Tooltip } from 'antd';
 import Link from 'umi/link';
 import styles from './Blog.less';
 
@@ -127,7 +127,9 @@ class BlogDetail extends Component {
                   </Col>
                   <Col span={1} style={{ textAlign: 'right' }}>
                     <a onClick={this.showMeta}>
-                      <Icon type="info-circle" />
+                      <Tooltip title="更多信息">
+                        <Icon type="info-circle" />
+                      </Tooltip>
                     </a>
                   </Col>
                 </Row>
