@@ -43,7 +43,8 @@
       .microContent {
         ul,
         ol,
-        p {
+        p,
+        blockquote {
           margin: @padding-sm 0;
 
           &:last-child {
@@ -54,6 +55,16 @@
         ul,
         ol {
           padding-left: 20px;
+        }
+
+        blockquote p {
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          &:first-child {
+            margin-top: 0;
+          }
         }
       }
     }
