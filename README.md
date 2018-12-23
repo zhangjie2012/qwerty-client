@@ -1,13 +1,13 @@
 # qwerty-client
 
-a [qwerty](https://github.com/zhangjie2012/qwerty) web client, based on ant design pro. this is [demo (my blog)](http://www.zhangjiee.com).
+A [qwerty](https://github.com/zhangjie2012/qwerty) web client, based on ant design pro. Demo site <http://www.zhangjiee.com>.
 
-qwerty is a full website solution for programmer, [more information](https://github.com/zhangjie2012/qwerty).
+Q werty is a full website solution for programmer, [more information](https://github.com/zhangjie2012/qwerty).
 
-## deploy
+## Deploy
 
 1. `npm run build` generate `dist`
-2. async dist to your vps
+2. async dist to your host
 3. configure nginx:
     + [x] qwerty-server has run, get running `ip:port`
     + [x] index leading to the right dist path
@@ -15,7 +15,7 @@ qwerty is a full website solution for programmer, [more information](https://git
     + [x] django-admin static css/js file leading to the right path
 4. `nginx -s reload`
 
-maybe nginx config file like this:
+Maybe nginx config file like this:
 
 ``` nginx
 server {
@@ -65,4 +65,4 @@ server {
 }
 ```
 
-more build and deploy look [Pro Build & Deploy](https://pro.ant.design/docs/deploy) document.
+More build and deploy check [Pro Build & Deploy](https://pro.ant.design/docs/deploy) document.
