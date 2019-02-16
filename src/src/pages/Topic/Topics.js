@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
 import Link from 'umi/link';
-import { Row, Col, Icon, Spin, Tooltip, Tag } from 'antd';
+import { Row, Col, Icon, Spin, Tooltip } from 'antd';
 import styles from './Topic.less';
 
 @connect(({ topic, loading }) => ({
@@ -41,13 +41,6 @@ class Topics extends Component {
                 <Col span={21}>
                   <div className={styles.topicTitle}>
                     <Link to={`/topic/${item.id}`}>{item.title}</Link>
-                    {item.tags.map(tag => {
-                      return (
-                        <Tag className={styles.topicTag} key={tag.slug} color={tag.color}>
-                          {tag.name}
-                        </Tag>
-                      );
-                    })}
                   </div>
                 </Col>
                 <Col span={2} className={styles.commentCount}>

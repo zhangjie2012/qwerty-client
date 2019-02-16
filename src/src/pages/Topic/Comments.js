@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'dva';
-import Link from 'umi/link';
 import { Row, Col, Icon, Spin, Tooltip, Modal } from 'antd';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { goToAnchor } from 'react-scrollable-anchor';
@@ -90,16 +89,6 @@ class Comments extends Component {
               footer={null}
             >
               <ul className={styles.commentMeta}>
-                {currentTopic.tags.length !== 0 && (
-                  <li>
-                    主题标签：
-                    {currentTopic.tags.map(tag => (
-                      <span key={tag.name} style={{ marginRight: 6 }}>
-                        {tag.name}
-                      </span>
-                    ))}
-                  </li>
-                )}
                 <li>
                   跟踪次数：
                   {commentList.length}
@@ -137,13 +126,6 @@ class Comments extends Component {
                         />
                       </div>
                     </div>
-                    {comment.article !== null && (
-                      <div className={styles.commentRel}>
-                        <Icon type="share-alt" className={styles.commentAltIcon} />
-                        {comment.article.createDT} 创建文章{' '}
-                        <Link to={`/blog/${comment.article.slug}`}>{comment.article.title}</Link>
-                      </div>
-                    )}
                   </Fragment>
                 );
               })}
