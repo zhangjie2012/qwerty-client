@@ -10,7 +10,7 @@ import styles from './Microblog.less';
 class MicroblogList extends Component {
   state = {
     page: 1,
-    perCount: 25,
+    perCount: 50,
   };
 
   componentDidMount() {
@@ -57,17 +57,17 @@ class MicroblogList extends Component {
             <Col span={8}>
               {currentPage !== 1 && (
                 <a onClick={this.prevPage}>
-                  <Icon type="left-circle" /> prev
+                  <Icon type="left-circle" /> PREV
                 </a>
               )}
             </Col>
             <Col span={8} style={{ textAlign: 'center' }}>
-              {currentPage} of {totalPages}
+              {currentPage} / {totalPages}
             </Col>
             <Col span={8} style={{ textAlign: 'right' }}>
               {currentPage !== totalPages && (
                 <a onClick={this.nextPage}>
-                  next <Icon type="right-circle" />
+                  NEXT <Icon type="right-circle" />
                 </a>
               )}
             </Col>
