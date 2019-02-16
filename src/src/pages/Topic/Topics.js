@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'dva';
 import Link from 'umi/link';
 import { Row, Col, Icon, Spin, Tooltip } from 'antd';
@@ -17,41 +17,70 @@ class Topics extends Component {
 
   render() {
     const {
-      topic: { topicList },
+      topic: { topicList, pinTopicList },
       loadingTopics,
     } = this.props;
 
     const TopicList = () => {
       return (
-        <div className={styles.topicList}>
-          {topicList.map(item => {
-            return (
-              <Row key={item.id} className={styles.commentRow}>
-                <Col span={1}>
-                  {item.archive ? (
-                    <Tooltip title="已完结">
-                      <Icon type="issues-close" className={styles.topicClose} />
-                    </Tooltip>
-                  ) : (
-                    <Tooltip title="更新中">
-                      <Icon type="clock-circle" className={styles.topicOpen} />
-                    </Tooltip>
-                  )}
-                </Col>
-                <Col span={21}>
-                  <div className={styles.topicTitle}>
-                    <Link to={`/topic/${item.id}`}>{item.title}</Link>
+        <Fragment>
+          <Row className={styles.pinTopicList} gutter={12}>
+            {pinTopicList.map(item => {
+              return (
+                <Col span={8} key={item.id}>
+                  <div className={styles.pinTopic}>
+                    <div className={styles.topicTitle}>
+                      <Link to={`/topic/${item.id}`}>{item.title}</Link>
+                    </div>
+                    <Row className={styles.topicAux}>
+                      <Col span={12}>
+                        {item.archive ? (
+                          <span>
+                            <Icon type="issues-close" className={styles.topicClose} /> CLOSED
+                          </span>
+                        ) : (
+                          <span>
+                            <Icon type="clock-circle" className={styles.topicOpen} /> UPDATING
+                          </span>
+                        )}
+                      </Col>
+                      <Col span={12}>
+                        <Icon type="message" /> {item.comment_count}
+                      </Col>
+                    </Row>
                   </div>
                 </Col>
-                <Col span={2} className={styles.commentCount}>
-                  {!item.archive &&
-                    item.pin && <Icon type="pushpin" theme="twoTone" className={styles.topicPin} />}
-                  <Icon type="message" /> {item.comment_count}
-                </Col>
-              </Row>
-            );
-          })}
-        </div>
+              );
+            })}
+          </Row>
+          <div className={styles.topicList}>
+            {topicList.map(item => {
+              return (
+                <Row key={item.id} className={styles.commentRow}>
+                  <Col span={1}>
+                    {item.archive ? (
+                      <Tooltip title="已完结">
+                        <Icon type="issues-close" className={styles.topicClose} />
+                      </Tooltip>
+                    ) : (
+                      <Tooltip title="更新中">
+                        <Icon type="clock-circle" className={styles.topicOpen} />
+                      </Tooltip>
+                    )}
+                  </Col>
+                  <Col span={21}>
+                    <div className={styles.topicTitle}>
+                      <Link to={`/topic/${item.id}`}>{item.title}</Link>
+                    </div>
+                  </Col>
+                  <Col span={2} className={styles.commentCount}>
+                    <Icon type="message" /> {item.comment_count}
+                  </Col>
+                </Row>
+              );
+            })}
+          </div>
+        </Fragment>
       );
     };
 

@@ -25,12 +25,45 @@ ul.commentMeta {
     margin-right: @padding-xs;
   }
 
+  .pinTopicList {
+    padding-top: @padding-md;
+
+    .pinTopic {
+      padding: @padding-sm;
+      border-radius: @border-radius-base;
+      margin-bottom: 12px;
+      border: 1px solid @border-color-split;
+
+      .topicTitle {
+        a {
+          color: @heading-color;
+          &:hover {
+            color: @text-color;
+          }
+        }
+      }
+
+      .topicAux {
+        margin-top: 6px;
+        color: @text-color-secondary;
+
+        .issueStatus {
+          width: 30px;
+        }
+      }
+    }
+  }
+
   .topicList {
     padding-bottom: @padding-lg;
 
     .commentRow {
       padding: @padding-md 0;
-      border-bottom: 1px solid @border-color-base;
+      border-top: 1px solid @border-color-base;
+
+      &:last-child {
+        border-bottom: 1px solid @border-color-base;
+      }
 
       .topicTitle {
         a {
