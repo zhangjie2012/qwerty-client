@@ -22,7 +22,7 @@ class About extends Component {
         <div className={styles.pageTitle}>ABOUT</div>
         {user && (
           <Row gutter={16} className={styles.user}>
-            <Col span={16}>
+            <Col span={18}>
               <ul>
                 <li>
                   常用昵称：
@@ -60,7 +60,7 @@ class About extends Component {
                 </li>
               </ul>
             </Col>
-            <Col span={8}>
+            <Col span={6}>
               <img alt="头像" src={user.avatar} />
             </Col>
           </Row>

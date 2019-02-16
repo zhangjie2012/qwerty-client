@@ -36,11 +36,11 @@ class Topics extends Component {
                       <Col span={12}>
                         {item.archive ? (
                           <span>
-                            <Icon type="issues-close" className={styles.topicClose} /> CLOSED
+                            <Icon type="issues-close" className={styles.topicClose} /> closed
                           </span>
                         ) : (
                           <span>
-                            <Icon type="clock-circle" className={styles.topicOpen} /> UPDATING
+                            <Icon type="clock-circle" className={styles.topicOpen} /> updating
                           </span>
                         )}
                       </Col>
