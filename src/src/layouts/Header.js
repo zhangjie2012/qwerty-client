@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react';
-import { Layout, Menu, Dropdown, Icon } from 'antd';
+import { Layout, Menu, Icon } from 'antd';
 import Link from 'umi/link';
 
 import styles from './Header.less';
 
 const { Header } = Layout;
+const { SubMenu } = Menu;
 
 class HeaderView extends PureComponent {
   getMenus = menuData => {
@@ -30,12 +31,6 @@ class HeaderView extends PureComponent {
 
   render() {
     const { siteInfo, pathname, menuData, isMobile } = this.props;
-
-    const menu = (
-      <Menu theme="dark" mode="vertical" selectedKeys={this.getSelectedKeys(pathname, menuData)}>
-        {this.getMenus(menuData)}
-      </Menu>
-    );
     return (
       <Header>
         <div className="container">
@@ -52,11 +47,22 @@ class HeaderView extends PureComponent {
               {this.getMenus(menuData)}
             </Menu>
           ) : (
-            <Dropdown overlay={menu} trigger={['click']} className={styles.mobMenu}>
-              <a>
-                <Icon type="menu-fold" />
-              </a>
-            </Dropdown>
+            <Menu
+              theme="dark"
+              mode="horizontal"
+              className={styles.mobMenu}
+              selectedKeys={this.getSelectedKeys(pathname, menuData)}
+            >
+              <SubMenu
+                title={
+                  <span>
+                    <Icon type="menu-fold" />
+                  </span>
+                }
+              >
+                {this.getMenus(menuData)}
+              </SubMenu>
+            </Menu>
           )}
         </div>
       </Header>
