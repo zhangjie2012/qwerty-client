@@ -144,7 +144,21 @@ body {
   }
 }
 
-.container {
-  width: 780px;
-  margin: 0 auto;
+.screen-xxl,
+.screen-xl,
+.screen-lg,
+.screen-md {
+  .container {
+    width: 780px;
+    margin: 0 auto;
+  }
+}
+
+.screen-sm,
+.screen-xs {
+  .container {
+    width: 100%;
+    padding: 0 @padding-md;
+    margin: 0 auto;
+  }
 }

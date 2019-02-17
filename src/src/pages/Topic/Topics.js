@@ -27,7 +27,7 @@ class Topics extends Component {
           <Row className={styles.pinTopicList} gutter={12}>
             {pinTopicList.map(item => {
               return (
-                <Col span={8} key={item.id}>
+                <Col xs={24} span={8} key={item.id}>
                   <div className={styles.pinTopic}>
                     <div className={styles.topicTitle}>
                       <Link to={`/topic/${item.id}`}>{item.title}</Link>
@@ -57,7 +57,7 @@ class Topics extends Component {
             {topicList.map(item => {
               return (
                 <Row key={item.id} className={styles.commentRow}>
-                  <Col span={1}>
+                  <Col xs={2} span={1}>
                     {item.archive ? (
                       <Tooltip title="已完结">
                         <Icon type="issues-close" className={styles.topicClose} />
@@ -68,12 +68,12 @@ class Topics extends Component {
                       </Tooltip>
                     )}
                   </Col>
-                  <Col span={21}>
+                  <Col xs={18} span={21}>
                     <div className={styles.topicTitle}>
                       <Link to={`/topic/${item.id}`}>{item.title}</Link>
                     </div>
                   </Col>
-                  <Col span={2} className={styles.commentCount}>
+                  <Col xs={4} span={2} className={styles.commentCount}>
                     <Icon type="message" /> {item.comment_count}
                   </Col>
                 </Row>

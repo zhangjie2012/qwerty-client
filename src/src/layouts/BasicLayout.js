@@ -1,4 +1,5 @@
 import React from 'react';
+import Media from 'react-media';
 import { Layout } from 'antd';
 import { connect } from 'dva';
 import DocumentTitle from 'react-document-title';
@@ -146,9 +147,9 @@ class BasicLayout extends React.PureComponent {
       children,
       location: { pathname },
       global: { siteInfo },
+      isMobile,
     } = this.props;
     const { menuData } = this.state;
-
     const layout = (
       <Layout
         style={{
@@ -156,7 +157,7 @@ class BasicLayout extends React.PureComponent {
           background: 'white',
         }}
       >
-        <Header siteInfo={siteInfo} menuData={menuData} pathname={pathname} />
+        <Header siteInfo={siteInfo} menuData={menuData} pathname={pathname} isMobile={isMobile} />
         <Content>
           <div className="container">{children}</div>
         </Content>
@@ -181,4 +182,8 @@ class BasicLayout extends React.PureComponent {
 
 export default connect(({ global }) => ({
   global,
-}))(BasicLayout);
+}))(props => (
+  <Media query="(max-width: 599px)">
+    {isMobile => <BasicLayout {...props} isMobile={isMobile} />}
+  </Media>
+));

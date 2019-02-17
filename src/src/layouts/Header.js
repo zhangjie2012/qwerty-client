@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Dropdown, Icon } from 'antd';
 import Link from 'umi/link';
 
 import styles from './Header.less';
@@ -29,22 +29,35 @@ class HeaderView extends PureComponent {
   };
 
   render() {
-    const { siteInfo, pathname, menuData } = this.props;
+    const { siteInfo, pathname, menuData, isMobile } = this.props;
 
+    const menu = (
+      <Menu theme="dark" mode="vertical" selectedKeys={this.getSelectedKeys(pathname, menuData)}>
+        {this.getMenus(menuData)}
+      </Menu>
+    );
     return (
       <Header>
         <div className="container">
           <div className={styles.title}>
             <Link to="/">{siteInfo.title}</Link>
           </div>
-          <Menu
-            theme="dark"
-            mode="horizontal"
-            className={styles.menu}
-            selectedKeys={this.getSelectedKeys(pathname, menuData)}
-          >
-            {this.getMenus(menuData)}
-          </Menu>
+          {!isMobile ? (
+            <Menu
+              theme="dark"
+              mode="horizontal"
+              className={styles.menu}
+              selectedKeys={this.getSelectedKeys(pathname, menuData)}
+            >
+              {this.getMenus(menuData)}
+            </Menu>
+          ) : (
+            <Dropdown overlay={menu} trigger={['click']} className={styles.mobMenu}>
+              <a>
+                <Icon type="menu-fold" />
+              </a>
+            </Dropdown>
+          )}
         </div>
       </Header>
     );
