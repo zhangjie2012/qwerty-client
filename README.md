@@ -2,18 +2,18 @@
 
 A [qwerty](https://github.com/zhangjie2012/qwerty) web client, based on ant design pro. Demo site <http://www.zhangjiee.com>.
 
-Q werty is a full website solution for programmer, [more information](https://github.com/zhangjie2012/qwerty).
+Qwerty is a full website solution for programmer, [more information](https://github.com/zhangjie2012/qwerty).
 
 ## Deploy
 
 1. `npm run build` generate `dist`
-2. async dist to your host
+2. `async` dist to your host
 3. configure nginx:
     + [x] qwerty-server has run, get running `ip:port`
     + [x] index leading to the right dist path
     + [x] `api/__adm` proxy_pass to server
     + [x] django-admin static css/js file leading to the right path
-4. `nginx -s reload`
+4. `nginx -s reload` _if just update static file, but not update nginx config file, do not need reload nginx_
 
 Maybe nginx config file like this:
 
