@@ -1,6 +1,19 @@
 export default [
   // app
   {
+    path: '/pure',
+    component: '../layouts/PureLayout',
+    routes: [
+      {
+        path: '/pure/blog/:slug',
+        matchPaths: ['/pure/blog'],
+        name: 'blog',
+        label: '博客纯享',
+        component: './Blog/PureBlogDetail',
+      },
+    ],
+  },
+  {
     path: '/',
     component: '../layouts/BasicLayout',
     routes: [

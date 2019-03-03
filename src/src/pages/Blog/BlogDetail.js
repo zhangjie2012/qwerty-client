@@ -109,7 +109,7 @@ class BlogDetail extends Component {
   };
 
   render() {
-    const { metaVisible } = this.state;
+    const { slug, metaVisible } = this.state;
     const {
       blog: { articleDetail, comments },
       loadingBlog,
@@ -122,10 +122,15 @@ class BlogDetail extends Component {
             <div className={styles.article}>
               <div className={styles.title}>
                 <Row gutter={8} type="flex" align="bottom">
-                  <Col span={23}>
+                  <Col span={20}>
                     <h1>{articleDetail.title}</h1>
                   </Col>
-                  <Col span={1} style={{ textAlign: 'right' }}>
+                  <Col span={4} style={{ textAlign: 'right' }}>
+                    <Link to={`/pure/blog/${slug}`} style={{ marginRight: 6 }}>
+                      <Tooltip title="纯享版本">
+                        <Icon type="block" />
+                      </Tooltip>
+                    </Link>
                     <a onClick={this.showMeta}>
                       <Tooltip title="更多信息">
                         <Icon type="info-circle" />

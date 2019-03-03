@@ -1,0 +1,138 @@
+@baseFontSize: 14px;
+@auxFontSize: 13px;
+@bodyBackground: #f5f5f5;
+@borderColor: #e8e8e8;
+@textColor: #555;
+@secondTextColor: #8c8c8c;
+
+@headerSize: 26px;
+@h2Size: 22px;
+@h3Size: 18px;
+@h4Size: 16px;
+
+.content {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-weight: normal;
+    margin: 0 0;
+    padding: 0 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 15px;
+    margin: 0 0;
+  }
+
+  margin: 20px auto;
+  padding: 36px 48px;
+  font-size: @baseFontSize;
+  background-color: white;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0), 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  max-width: 960px;
+
+  .pageHeader {
+    margin-bottom: 15px;
+  }
+
+  .meta {
+    color: @secondTextColor;
+    margin-bottom: 20px;
+
+    a {
+      color: @secondTextColor;
+    }
+  }
+
+  h1 {
+    font-size: @headerSize;
+  }
+
+  h2 {
+    font-size: @h2Size;
+    margin: 25px 0 20px;
+  }
+
+  h3 {
+    font-size: @h3Size;
+    margin: 20px 0 20px;
+  }
+
+  h4 {
+    font-size: @h4Size;
+    margin: 20px 0 20px;
+  }
+
+  .copyright {
+    font-size: @auxFontSize;
+    color: @secondTextColor;
+    text-align: right;
+    margin-bottom: 15px;
+  }
+
+  .coverImg img {
+    display: block;
+    vertical-align: middle;
+    page-break-inside: avoid;
+    border: 1px solid @borderColor;
+    width: 100%;
+    margin: 15px auto;
+  }
+
+  .markdownContent {
+    p {
+      color: @textColor;
+      margin-bottom: 16px;
+      line-height: 24px;
+      text-align: justify;
+    }
+
+    pre,
+    code {
+      background-color: #eef;
+      border-radius: 4px;
+    }
+
+    pre {
+      padding: 8px;
+      margin: 16px 0;
+    }
+
+    code {
+      padding: 1px 5px;
+      color: #111;
+    }
+
+    pre code {
+      padding: 0 0;
+    }
+
+    img {
+      display: block;
+      vertical-align: middle;
+      page-break-inside: avoid;
+      border: 1px solid @borderColor;
+      max-width: 100%;
+      margin: 15px auto;
+    }
+
+    blockquote {
+      padding: 0 15px;
+      margin: 16px 0;
+      border-left: 2px solid rgba(40, 50, 60, 0.85);
+      overflow: auto;
+      word-wrap: break-word;
+    }
+
+    blockquote p {
+      color: @secondTextColor;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
