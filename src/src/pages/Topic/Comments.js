@@ -60,10 +60,10 @@ class Comments extends Component {
           <div className={styles.comment}>
             <div className={styles.title}>
               <Row type="flex" align="middle">
-                <Col span={22}>
+                <Col span={20}>
                   <h1>{currentTopic.title}</h1>
                 </Col>
-                <Col span={2} className={styles.meta} style={{ textAlign: 'right' }}>
+                <Col span={4} className={styles.meta} style={{ textAlign: 'right' }}>
                   {currentTopic.archive ? (
                     <Tooltip title="已完结">
                       <Icon type="issues-close" className={styles.topicClose} />
