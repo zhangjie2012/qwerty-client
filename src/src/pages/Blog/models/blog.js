@@ -114,8 +114,8 @@ export default {
       const { comment_list } = payload;
       const articleDetail = {
         title: payload.title,
-        publishDT: moment(payload.publish_dt).format('YYYY-MM-DD HH:mm:ss'),
-        updateDT: moment(payload.update_dt).format('YYYY-MM-DD HH:mm:ss'),
+        publishDT: moment(payload.publish_dt).format('YYYY-MM-DD HH:mm'),
+        updateDT: moment(payload.update_dt).format('YYYY-MM-DD HH:mm'),
         category: payload.category,
         coverImg: payload.cover_img,
         imgCopyRight: payload.img_copyright,
