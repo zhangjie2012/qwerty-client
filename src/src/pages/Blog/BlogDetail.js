@@ -154,16 +154,20 @@ class BlogDetail extends Component {
                     </Link>
                   </li>
                   <li>
-                    评论数量：
-                    {articleDetail.commentCount}
-                  </li>
-                  <li>
                     发布时间：
                     {articleDetail.publishDT}
                   </li>
                   <li>
                     更新时间：
                     {articleDetail.updateDT}
+                  </li>
+                  <li>
+                    评论数量：
+                    {articleDetail.commentCount}
+                  </li>
+                  <li>
+                    PageView：
+                    {articleDetail.pageViewCount}
                   </li>
                 </ul>
               </Modal>

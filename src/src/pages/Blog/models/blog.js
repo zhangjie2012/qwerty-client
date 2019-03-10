@@ -121,6 +121,7 @@ export default {
         imgCopyRight: payload.img_copyright,
         content: payload.content,
         commentCount: comment_list.length,
+        pageViewCount: payload.pv,
       };
       const comments = [];
       // eslint-disable-next-line

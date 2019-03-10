@@ -81,7 +81,7 @@ export default {
 
       return {
         ...state,
-        currentTopic: topic /* id, title, tags, createDT, updateDT */,
+        currentTopic: topic /* id, title, tags, createDT, updateDT, pv */,
         commentList /* id, content, createDT */,
       };
     },

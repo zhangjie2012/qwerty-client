@@ -94,6 +94,10 @@ class Comments extends Component {
                   {commentList.length}
                 </li>
                 <li>
+                  PageView：
+                  {currentTopic.pv}
+                </li>
+                <li>
                   创建时间：
                   {currentTopic.createDT}
                 </li>
