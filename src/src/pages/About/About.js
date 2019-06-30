@@ -25,38 +25,42 @@ class About extends Component {
             <Col span={18}>
               <ul>
                 <li>
-                  常用昵称：
-                  {user.nickname}
+                  <span className={styles.label}>常用昵称：</span>
+                  <span className={styles.value}>{user.nickname}</span>
                 </li>
                 <li>
-                  Github：
-                  <a href={`https://github.com/${user.github}`}>{user.github}</a>
+                  <span className={styles.label}>Github：</span>
+                  <span className={styles.value}>
+                    <a href={`https://github.com/${user.github}`}>{user.github}</a>
+                  </span>
                 </li>
                 <li>
-                  电子邮件：
-                  {user.email}
+                  <span className={styles.label}>电子邮件：</span>
+                  <span className={styles.value}>{user.email}</span>
                 </li>
                 <li>
-                  目前职位：
-                  {user.title}
+                  <span className={styles.label}>目前职位：</span>
+                  <span className={styles.value}>{user.title}</span>
                 </li>
                 <li>
-                  职业经历：
-                  {user.career}
+                  <span className={styles.label}>职业经历：</span>
+                  <span className={styles.value}>{user.career}</span>
                 </li>
                 <li>
-                  在线社交：
-                  {user.social.map(item => {
-                    return (
-                      <a className={styles.tag} key={item.label} href={item.link}>
-                        {item.label}
-                      </a>
-                    );
-                  })}
+                  <span className={styles.label}>在线社交：</span>
+                  <span className={styles.value}>
+                    {user.social.map(item => {
+                      return (
+                        <a className={styles.tag} key={item.label} href={item.link}>
+                          {item.label}
+                        </a>
+                      );
+                    })}
+                  </span>
                 </li>
                 <li>
-                  所在城市：
-                  {user.city}
+                  <span className={styles.label}>所在城市：</span>
+                  <span className={styles.value}>{user.city}</span>
                 </li>
               </ul>
             </Col>

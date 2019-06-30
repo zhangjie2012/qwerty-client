@@ -25,7 +25,9 @@ export default {
     saveSiteInfo(state, { payload }) {
       return {
         ...state,
-        siteInfo: payload.site_info, // title, copyright, ICP
+        siteInfo: {
+          ...payload, // title, copyright, ICP
+        },
       };
     },
   },

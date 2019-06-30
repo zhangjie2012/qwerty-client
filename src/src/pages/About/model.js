@@ -26,7 +26,7 @@ export default {
     saveUser(state, { payload }) {
       return {
         ...state,
-        user: payload.user,
+        user: payload,
       };
     },
   },

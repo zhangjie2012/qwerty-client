@@ -45,6 +45,13 @@ body {
     padding: 0;
   }
 
+  img {
+    border: 1px solid @border-color-split;
+    padding: 5px;
+    max-width: 100%;
+    border-radius: @border-radius-sm;
+  }
+
   .markdownContent {
     h1,
     h2,
@@ -82,28 +89,22 @@ body {
       text-align: justify;
     }
 
-    img {
-      display: block;
-      vertical-align: middle;
-      page-break-inside: avoid;
-      max-width: 100%;
-      border: 1px solid @border-color-split;
-      margin: @padding-md auto;
-    }
-
     pre,
     code {
       font-size: @font-size-base - 1;
       color: @text-color;
-      background-color: #f5f8fa;
+      background-color: #f6f8fa;
     }
 
     pre {
       padding: @padding-xs;
+      margin: @padding-sm 0;
     }
 
     code {
       padding: 1px 5px;
+      border: 1px solid #eaeaea;
+      border-radius: @border-radius-sm;
     }
 
     pre code {
@@ -118,15 +119,15 @@ body {
       border-left: 2px solid #b0b0b0;
       overflow: auto;
       word-wrap: break-word;
-    }
 
-    blockquote p {
-      &:last-child {
-        margin-bottom: 0;
-      }
+      p {
+        &:last-child {
+          margin-bottom: 0;
+        }
 
-      &:first-child {
-        margin-top: 0;
+        &:first-child {
+          margin-top: 0;
+        }
       }
     }
 
