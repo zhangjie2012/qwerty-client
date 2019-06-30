@@ -44,20 +44,22 @@ export default {
       const topicList = [];
       const pinTopicList = [];
       for (const topic of payload) {
-        const createDT = moment(topic.create_dt).format('YYYY-MM-DD HH:mm');
-        const updateDT = moment(topic.update_dt).format('YYYY-MM-DD HH:mm');
-        if (topic.pin) {
-          pinTopicList.push({
+        if (topic.comment_count !== 0) {
+          const createDT = moment(topic.create_dt).format('YYYY-MM-DD HH:mm');
+          const updateDT = moment(topic.update_dt).format('YYYY-MM-DD HH:mm');
+          if (topic.pin) {
+            pinTopicList.push({
+              ...topic /* id, title, pin, archive, comment_count */,
+              createDT,
+              updateDT,
+            });
+          }
+          topicList.push({
             ...topic /* id, title, pin, archive, comment_count */,
             createDT,
             updateDT,
           });
         }
-        topicList.push({
-          ...topic /* id, title, pin, archive, comment_count */,
-          createDT,
-          updateDT,
-        });
       }
       return {
         ...state,
