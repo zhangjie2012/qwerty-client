@@ -98,7 +98,8 @@ export default {
 
       const articleListBak = [];
       for (const article of articleList) {
-        article.publish_dt = moment(article.publish_dt).format('YYYY年MM月DD日');
+        article.publish_dt = moment(article.publish_dt).format('YYYY-MM-DD HH:mm');
+        console.log(article);
         articleListBak.push(article);
       }
       return {
@@ -128,7 +129,7 @@ export default {
       for (const item of comment_list) {
         comments.push({
           ...item,
-          publishDT: moment(item.publish_dt).format('YYYY年MM月DD日 HH:mm'),
+          publishDT: moment(item.publish_dt).format('YYYY-MM-DD HH:mm'),
         });
       }
       return {

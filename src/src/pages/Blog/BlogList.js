@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
-import { Spin } from 'antd';
+import { Spin, Row, Col } from 'antd';
 import Link from 'umi/link';
 
 import styles from './Blog.less';
@@ -12,7 +12,7 @@ import styles from './Blog.less';
 class BlogList extends Component {
   state = {
     page: 1,
-    perCount: 6,
+    perCount: 1000,
   };
 
   componentDidMount() {
@@ -55,18 +55,22 @@ class BlogList extends Component {
             {articleList.map(item => {
               return (
                 <div key={item.slug} className={styles.blogRow}>
-                  <div className={styles.blogMeta}>{item.publish_dt}</div>
                   <div className={styles.blogTitle}>
                     <Link to={`/blog/${item.slug}`}>{item.title}</Link>
                   </div>
+                  <Row className={styles.blogMeta}>
+                    <Col span={12}>
+                      #{' '}
+                      <Link to={`/blogs/category#${item.category.slug}`}>{item.category.name}</Link>
+                    </Col>
+                    <Col span={12} style={{ textAlign: 'right' }}>
+                      {item.publish_dt}
+                    </Col>
+                  </Row>
                   {item.abstract && <div className={styles.blogAbstract}>{item.abstract}</div>}
                 </div>
               );
             })}
-          </div>
-          <div className={styles.more}>
-            更多文章，见 <Link to="/blogs/archive">列表</Link> &&{' '}
-            <Link to="/blogs/category">分类</Link>。
           </div>
         </Spin>
       </div>

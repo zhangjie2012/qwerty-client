@@ -6,16 +6,31 @@ ul.blogMeta {
 }
 
 .content {
+  padding-bottom: @padding-lg;
+
   .blogRow {
-    padding: @padding-lg 0;
+    padding: @padding-sm 0;
     border-bottom: 1px solid @border-color-base;
 
     .blogTitle {
-      margin-bottom: @padding-xs;
       font-size: @font-size-base + 6;
     }
 
+    .blogMeta {
+      padding-top: @padding-xs / 2;
+      color: @text-color-secondary;
+      a {
+        color: @text-color-secondary;
+
+        &:hover {
+          color: @text-color;
+        }
+      }
+    }
+
     .blogAbstract {
+      padding-top: @padding-xs / 2;
+      color: @text-color-secondary;
       text-align: justify;
     }
   }
@@ -35,7 +50,7 @@ ul.blogMeta {
     padding: @padding-lg 0;
 
     .title {
-      border-bottom: 2px solid @border-color-base;
+      border-bottom: 1px solid @border-color-base;
       padding-bottom: @padding-sm;
       margin-bottom: @padding-md;
 
@@ -48,68 +63,16 @@ ul.blogMeta {
     }
 
     .coverImg {
+      img {
+        width: 100%;
+      }
+
       .copyright {
         text-align: right;
         color: @text-color-secondary;
+        margin-top: @padding-xs;
         margin-bottom: @padding-md;
         font-style: italic;
-      }
-    }
-  }
-
-  .comment {
-    .commentDivHeader {
-      font-size: @font-size-base + 6;
-      margin: @padding-md 0;
-      color: @heading-color;
-    }
-
-    .commentRow {
-      padding-top: @padding-md;
-      border-bottom: 1px solid @border-color-split;
-
-      &:first-child {
-        border-top: 1px solid @border-color-split;
-      }
-
-      .commentMeta {
-        height: 45px;
-
-        .avatar {
-          float: left;
-
-          img {
-            height: 45px;
-            border-radius: @border-radius-base;
-          }
-        }
-
-        .userInfo {
-          margin-left: 55px;
-          line-height: 22px;
-
-          .commentDate {
-            color: @text-color-secondary;
-          }
-        }
-      }
-
-      .commentContent {
-        h1,
-        h2,
-        h3,
-        h4,
-        h5 {
-          font-size: @font-size-base;
-          margin: @padding-md 0 !important;
-          font-weight: bold;
-        }
-      }
-    }
-
-    .postComment {
-      .formRow {
-        margin-bottom: @padding-sm;
       }
     }
   }

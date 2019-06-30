@@ -70,7 +70,7 @@ class BlogDetail extends Component {
           {articleDetail && (
             <div className={styles.article}>
               <div className={styles.title}>
-                <Row gutter={8} type="flex" align="bottom">
+                <Row gutter={8} type="flex" align="middle">
                   <Col span={20}>
                     <h1>{articleDetail.title}</h1>
                   </Col>
@@ -109,10 +109,6 @@ class BlogDetail extends Component {
                   <li>
                     更新时间：
                     {articleDetail.updateDT}
-                  </li>
-                  <li>
-                    评论数量：
-                    {articleDetail.commentCount}
                   </li>
                   <li>
                     PageView：
