@@ -9,29 +9,27 @@ ul.blogMeta {
   padding-bottom: @padding-lg;
 
   .blogRow {
-    padding: @padding-sm 0;
-    border-bottom: 1px solid @border-color-base;
+    padding: @padding-lg 0;
+    border-bottom: 1px solid @border-color-split;
 
     .blogTitle {
       font-size: @font-size-base + 6;
     }
 
+    .blogAbstract {
+      padding-top: @padding-md;
+      text-align: justify;
+    }
+
     .blogMeta {
-      padding-top: @padding-xs / 2;
-      color: @text-color-secondary;
+      padding-top: @padding-md;
       a {
-        color: @text-color-secondary;
+        color: @text-color;
 
         &:hover {
           color: @text-color;
         }
       }
-    }
-
-    .blogAbstract {
-      padding-top: @padding-xs / 2;
-      color: @text-color-secondary;
-      text-align: justify;
     }
   }
 

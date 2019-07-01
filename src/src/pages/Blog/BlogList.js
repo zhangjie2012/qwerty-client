@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
-import { Spin, Row, Col } from 'antd';
+import { Spin, Row, Divider } from 'antd';
 import Link from 'umi/link';
 
 import styles from './Blog.less';
@@ -58,16 +58,12 @@ class BlogList extends Component {
                   <div className={styles.blogTitle}>
                     <Link to={`/blog/${item.slug}`}>{item.title}</Link>
                   </div>
-                  <Row className={styles.blogMeta}>
-                    <Col span={12}>
-                      #{' '}
-                      <Link to={`/blogs/category#${item.category.slug}`}>{item.category.name}</Link>
-                    </Col>
-                    <Col span={12} style={{ textAlign: 'right' }}>
-                      {item.publish_dt}
-                    </Col>
-                  </Row>
                   {item.abstract && <div className={styles.blogAbstract}>{item.abstract}</div>}
+                  <Row className={styles.blogMeta}>
+                    {item.publish_dt}
+                    <Divider type="vertical" />
+                    <Link to={`/blogs/category#${item.category.slug}`}>{item.category.name}</Link>
+                  </Row>
                 </div>
               );
             })}
