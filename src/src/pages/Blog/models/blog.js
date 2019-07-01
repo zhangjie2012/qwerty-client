@@ -37,7 +37,7 @@ export default {
     },
 
     *fetchBlogDetail({ payload }, { call, put }) {
-      const response = yield call(queryBlogDetail, payload.params);
+      const response = yield call(queryBlogDetail, payload.slug);
       if (response.status === 'ok') {
         yield put({
           type: 'saveBlog',
@@ -99,7 +99,6 @@ export default {
       const articleListBak = [];
       for (const article of articleList) {
         article.publish_dt = moment(article.publish_dt).format('YYYY-MM-DD HH:mm');
-        console.log(article);
         articleListBak.push(article);
       }
       return {

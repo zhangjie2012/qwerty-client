@@ -20,9 +20,7 @@ class BlogDetail extends Component {
     this.props.dispatch({
       type: 'blog/fetchBlogDetail',
       payload: {
-        params: {
-          slug,
-        },
+        slug,
       },
     });
   }

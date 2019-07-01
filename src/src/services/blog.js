@@ -7,25 +7,14 @@ export async function queryBlogs(params) {
   return request(`${prefix}/blogs?${stringify(params)}`);
 }
 
-export async function queryBlogDetail(params) {
-  return request(`${prefix}/query_blog_detail?${stringify(params)}`);
-}
-
-export async function queryBlogComments(params) {
-  return request(`${prefix}/query_blog_comments?${stringify(params)}`);
+export async function queryBlogDetail(slug) {
+  return request(`${prefix}/blogs/${slug}`);
 }
 
 export async function queryArchiveBlogs() {
-  return request(`${prefix}/query_archive_blogs`);
+  return request(`${prefix}/archives`);
 }
 
 export async function queryBlogCategory() {
-  return request(`${prefix}/query_blog_categories`);
-}
-
-export async function addComment(params) {
-  return request(`${prefix}/add_comment`, {
-    method: 'POST',
-    body: params,
-  });
+  return request(`${prefix}/categories`);
 }

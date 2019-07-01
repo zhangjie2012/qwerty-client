@@ -23,9 +23,7 @@ class PureBlogDetail extends Component {
     dispatch({
       type: 'blog/fetchBlogDetail',
       payload: {
-        params: {
-          slug,
-        },
+        slug,
       },
     });
   }
