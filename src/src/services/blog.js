@@ -4,7 +4,7 @@ import request from '@/utils/request';
 const prefix = '/server/blog/api/v1';
 
 export async function queryBlogs(params) {
-  return request(`${prefix}/query_blogs?${stringify(params)}`);
+  return request(`${prefix}/blogs?${stringify(params)}`);
 }
 
 export async function queryBlogDetail(params) {
