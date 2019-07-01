@@ -7,8 +7,7 @@
 _roadhog-api-doc
 
 # production
-/dist
-/dist.tar.gz
+/dist*
 /.vscode
 
 # misc
