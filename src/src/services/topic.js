@@ -4,9 +4,9 @@ import request from '@/utils/request';
 const prefix = '/server/topic/api/v1';
 
 export async function queryTopics() {
-  return request(`${prefix}/query_topics`);
+  return request(`${prefix}/topics`);
 }
 
 export async function queryTopicComments(params) {
-  return request(`${prefix}/query_topic_comments?${stringify(params)}`);
+  return request(`${prefix}/comments?${stringify(params)}`);
 }

@@ -4,5 +4,5 @@ import request from '@/utils/request';
 const prefix = '/server/microblog/api/v1';
 
 export async function queryMicroblogs(params) {
-  return request(`${prefix}/query_microblogs?${stringify(params)}`);
+  return request(`${prefix}/microblogs?${stringify(params)}`);
 }
