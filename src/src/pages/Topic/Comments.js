@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'dva';
-import { Row, Col, Icon, Spin, Tooltip, Modal } from 'antd';
+import { Row, Col, Icon, Spin, Tooltip, Modal, Divider } from 'antd';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { goToAnchor } from 'react-scrollable-anchor';
 import styles from './Topic.less';
@@ -117,6 +117,14 @@ class Comments extends Component {
                         <Row>
                           <Col span={20}>{comment.createDT}</Col>
                           <Col span={4} style={{ textAlign: 'right' }}>
+                            <a
+                              href={`/__adm/topic/comment/${comment.id}/change`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <Icon type="edit" />
+                            </a>
+                            <Divider type="vertical" />
                             <CopyToClipboard text={`${window.location.href}`}>
                               <a href={`#${comment.id}`}>#{comment.id}</a>
                             </CopyToClipboard>
