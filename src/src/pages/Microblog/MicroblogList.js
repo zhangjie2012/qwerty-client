@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
-import { Row, Col, Icon, Spin } from 'antd';
+import { Spin, Pagination } from 'antd';
 import styles from './Microblog.less';
 
 @connect(({ microblog, loading }) => ({
@@ -9,14 +9,18 @@ import styles from './Microblog.less';
 }))
 class MicroblogList extends Component {
   state = {
-    page: 1,
-    perCount: 50,
+    perCount: 25,
   };
 
   componentDidMount() {
-    const { page, perCount } = this.state;
-    this.fetchMicroblogs(page, perCount);
+    const { perCount } = this.state;
+    this.fetchMicroblogs(1, perCount);
   }
+
+  changePage = page => {
+    const { perCount } = this.state;
+    this.fetchMicroblogs(page, perCount);
+  };
 
   fetchMicroblogs = (page, perCount) => {
     this.props.dispatch({
@@ -30,53 +34,10 @@ class MicroblogList extends Component {
     });
   };
 
-  prevPage = () => {
-    const { perCount } = this.state;
-    const { currentPage } = this.props.microblog;
-    if (currentPage > 1) {
-      this.fetchMicroblogs(currentPage - 1, perCount);
-    }
-  };
-
-  nextPage = () => {
-    const { perCount } = this.state;
-    const { currentPage, totalPages } = this.props.microblog;
-    if (currentPage < totalPages) {
-      this.fetchMicroblogs(currentPage + 1, perCount);
-    }
-  };
-
   render() {
-    const { avatar, microblogList, currentPage, totalPages } = this.props.microblog;
+    const { avatar, microblogList, currentPage, totalCount } = this.props.microblog;
     const { loadingMicroblogs } = this.props;
-
-    const Pagination = () => {
-      if (totalPages > 1) {
-        return (
-          <Row className={styles.paginator}>
-            <Col span={8}>
-              {currentPage !== 1 && (
-                <a onClick={this.prevPage}>
-                  <Icon type="left-circle" /> PREV
-                </a>
-              )}
-            </Col>
-            <Col span={8} style={{ textAlign: 'center' }}>
-              {currentPage} / {totalPages}
-            </Col>
-            <Col span={8} style={{ textAlign: 'right' }}>
-              {currentPage !== totalPages && (
-                <a onClick={this.nextPage}>
-                  NEXT <Icon type="right-circle" />
-                </a>
-              )}
-            </Col>
-          </Row>
-        );
-      } else {
-        return null;
-      }
-    };
+    const { perCount } = this.state;
     return (
       <div className={styles.content}>
         <div className={styles.pageTitle}>MICRO.BLOG</div>
@@ -105,7 +66,16 @@ class MicroblogList extends Component {
             );
           })}
         </Spin>
-        <Pagination />
+
+        <Pagination
+          className={styles.paginator}
+          current={currentPage}
+          pageSize={perCount}
+          total={totalCount}
+          hideOnSinglePage
+          onChange={this.changePage}
+          size="small"
+        />
       </div>
     );
   }

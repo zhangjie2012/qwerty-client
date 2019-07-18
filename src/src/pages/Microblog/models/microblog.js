@@ -8,6 +8,7 @@ export default {
   state: {
     currentPage: 0,
     totalPages: 0,
+    totalCount: 0,
     avatar: '',
     microblogList: [] /* id, cover_img, content, publishDT */,
   },
@@ -32,6 +33,7 @@ export default {
         avatar,
         current_page_num: currentPage,
         total_pages: totalPages,
+        total_count: totalCount,
         microblog_list: microblogList,
       } = payload;
 
@@ -46,6 +48,7 @@ export default {
         avatar,
         currentPage,
         totalPages,
+        totalCount,
         microblogList: microblogListBak,
       };
     },
