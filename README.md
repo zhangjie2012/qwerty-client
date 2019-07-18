@@ -1,21 +1,19 @@
 # qwerty-client
 
-A [qwerty](https://github.com/zhangjie2012/qwerty) web client, based on ant design pro. Demo site <http://www.zhangjiee.com>.
+[qwerty] 的 Web 前端，基于 [Ant Design Pro](https://pro.ant.design/index-cn) 开发。
 
-Qwerty is a full website solution for programmer, [more information](https://github.com/zhangjie2012/qwerty).
+## 部署
 
-## Deploy
+1. `npm run build` 生成 `dist`
+2. 同步 dist 到主机上
+3. 配置 nginx:
+    + [x] 确保 server 端已经运行，得到 `ip:port`
+    + [x] index 指向 dist 所在目录
+    + [x] `api/__adm` proxy_pass 到服务端
+    + [x] django-admin 静态文件 `css/js` 指向正确的位置，_TODO：后端 Dockerfile 使用 nginx 之后，前端就不用管这个事了_
+4. `nginx -s reload` _如果仅仅更新了静态文件，没有更新 nginx 配置文件，不需要重新加载 nginx_
 
-1. `npm run build` generate `dist`
-2. `async` dist to your host
-3. configure nginx:
-    + [x] qwerty-server has run, get running `ip:port`
-    + [x] index leading to the right dist path
-    + [x] `api/__adm` proxy_pass to server
-    + [x] django-admin static css/js file leading to the right path
-4. `nginx -s reload` _if just update static file, but not update nginx config file, do not need reload nginx_
-
-Maybe nginx config file like this:
+nginx 样例：
 
 ``` nginx
 server {
@@ -65,4 +63,4 @@ server {
 }
 ```
 
-More build and deploy check [Pro Build & Deploy](https://pro.ant.design/docs/deploy) document.
+更多的构建和部署说明，请查看 [Pro Build & Deploy](https://pro.ant.design/docs/deploy) 文档。
