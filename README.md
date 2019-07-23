@@ -1,6 +1,6 @@
 # qwerty-client
 
-[qwerty] 的 Web 前端，基于 [Ant Design Pro](https://pro.ant.design/index-cn) 开发。
+[qwerty](http://getqwerty.org/) 的 Web 前端，基于 [Ant Design Pro](https://pro.ant.design/index-cn) 开发。
 
 ## 部署
 
