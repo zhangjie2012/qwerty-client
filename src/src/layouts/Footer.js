@@ -21,11 +21,7 @@ class FooterView extends PureComponent {
               )}
             <Divider type="vertical" />
             Site power by{' '}
-            <a
-              href="https://github.com/zhangjie2012/qwerty"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
+            <a href="http://getqwerty.org/" rel="noopener noreferrer" target="_blank">
               qwerty
             </a>
           </div>
