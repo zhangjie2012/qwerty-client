@@ -7,4 +7,28 @@
     border-bottom: 1px solid @border-color-base;
     font-style: italic;
   }
+
+  .filter {
+    padding: @padding-md 0;
+    font-style: italic;
+  }
+
+  .snippetList {
+    padding-bottom: @padding-lg;
+
+    .snippetItem {
+      padding: @padding-md 0;
+      border-top: 1px solid @border-color-base;
+
+      &:last-child {
+        border-bottom: 1px solid @border-color-base;
+      }
+
+      .snippetTag {
+        margin-right: 0;
+        font-family: 'Source Code Variable', 'Source Code Pro', Monaco, 'Consolas', 'ubuntu',
+          monospace;
+      }
+    }
+  }
 }

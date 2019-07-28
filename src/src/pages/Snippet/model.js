@@ -26,7 +26,7 @@ export default {
     saveSnippet(state, { snippets }) {
       return {
         ...state,
-        snippets,
+        snippets /* [{ id, title, pl_tag }] */,
       };
     },
   },
