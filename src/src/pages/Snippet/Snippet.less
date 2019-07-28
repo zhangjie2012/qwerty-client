@@ -31,4 +31,31 @@
       }
     }
   }
+
+  .detail {
+    margin: @padding-lg 0;
+
+    .title {
+      margin-bottom: @padding-md;
+
+      h1 {
+        margin: 0 0;
+        padding: 0 0;
+        font-size: @font-size-base + 12;
+        line-height: @font-size-base + 12;
+        font-weight: normal;
+      }
+
+      .meta {
+        color: @text-color-secondary;
+      }
+    }
+
+    .code {
+      pre code {
+        font-family: 'Source Code Variable', 'Source Code Pro', Monaco, 'Consolas', 'ubuntu',
+          monospace !important;
+      }
+    }
+  }
 }

@@ -48,15 +48,20 @@ export default [
         component: './Topic/Topics',
       },
       {
+        path: '/topic/:id',
+        component: './Topic/Comments',
+        hideInMenu: true,
+      },
+      {
         path: '/snippets',
         name: 'snippets',
         label: '代码片段',
-        matchPaths: ['/snippets', 'snippet'],
+        matchPaths: ['/snippets', '/snippet'],
         component: './Snippet/Snippets',
       },
       {
-        path: '/topic/:id',
-        component: './Topic/Comments',
+        path: '/snippet/:id',
+        component: './Snippet/SnippetDetail',
         hideInMenu: true,
       },
       {
