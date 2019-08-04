@@ -55,7 +55,7 @@ export default [
       {
         path: '/snippets',
         name: 'snippets',
-        label: '代码片段',
+        label: '片段',
         matchPaths: ['/snippets', '/snippet'],
         component: './Snippet/Snippets',
       },
