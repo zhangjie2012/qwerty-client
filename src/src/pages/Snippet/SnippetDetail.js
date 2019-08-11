@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { Row, Col, Switch, message } from 'antd';
 import { zenburn } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { connect } from 'dva';
 import styles from './Snippet.less';
@@ -10,6 +12,7 @@ import styles from './Snippet.less';
 class SnippetDetail extends Component {
   state = {
     id: this.props.match.params.id,
+    showLineNum: false,
   };
 
   componentDidMount() {
@@ -20,7 +23,14 @@ class SnippetDetail extends Component {
     });
   }
 
+  changeShowLineNum = flag => {
+    this.setState({
+      showLineNum: flag,
+    });
+  };
+
   render() {
+    const { showLineNum } = this.state;
     const { snippetDetail } = this.props.snippet;
     if (snippetDetail == null) {
       return null;
@@ -40,8 +50,26 @@ class SnippetDetail extends Component {
               />
             )}
           </div>
+          <Row className={styles.ctrl} type="flex" align="middle">
+            <Col span={12}>
+              <CopyToClipboard
+                text={snippetDetail.code}
+                onCopy={() => message.info('代码内容已复制到剪贴板')}
+              >
+                <a>复制代码</a>
+              </CopyToClipboard>
+            </Col>
+            <Col span={12} style={{ textAlign: 'right' }}>
+              行号：
+              <Switch checked={showLineNum} onChange={this.changeShowLineNum} size="small" />
+            </Col>
+          </Row>
           <div className={styles.code}>
-            <SyntaxHighlighter language={snippetDetail.pl_tag} style={zenburn}>
+            <SyntaxHighlighter
+              language={snippetDetail.pl_tag}
+              style={zenburn}
+              showLineNumbers={showLineNum}
+            >
               {snippetDetail.code}
             </SyntaxHighlighter>
           </div>
